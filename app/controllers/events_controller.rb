@@ -19,16 +19,23 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user_id = current_user.id
     if @event.save
-      redirect_to root_url
+      redirect_to event_path(@event.id)
     else
       render 'new'
     end
   end
 
   def show
-    @join = Join.new
-    1.times { @join.date_answers.build }
-    1.times { @join.shop_answers.build }
+    @joins = Join.all
+    if params[:join_id]
+      set_join
+      @shops = Shop.all
+      @schedules = Schedule.all
+    else
+      @join = Join.new
+      1.times { @join.date_answers.build }
+      1.times { @join.shop_answers.build }
+    end
   end
 
   def edit
@@ -62,6 +69,10 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+  end
+
+  def set_join
+    @join = Join.find(params[:join_id])
   end
 
   def move_to_index

@@ -4,4 +4,6 @@ class Join < ApplicationRecord
   accepts_nested_attributes_for :date_answers, allow_destroy: true
   has_many :shop_answers, dependent: :destroy
   accepts_nested_attributes_for :shop_answers, allow_destroy: true
+
+  validates :nickname, presence: true
 end
