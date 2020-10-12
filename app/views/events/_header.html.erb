@@ -5,7 +5,7 @@
       <div class="user_nav grid-6">
         <%= current_user.nickname %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <%= link_to "投稿する", "#", class: "post" %>
+        <%= link_to "イベント登録", new_event_path, class: "post" %>
       </div>
     <% else %>
       <div class="grid-6">

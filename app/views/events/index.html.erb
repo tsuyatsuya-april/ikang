@@ -1,1 +1,18 @@
 <%= render "header" %>
+
+<% if @events %>
+  <% @events.each do |event| %>
+    <div id="select-days">
+    <%= link_to event_path(event.id) do%>
+      <ul id="add-date-style">
+        <li class = "date-input">
+          <%= event.name %>
+        </li>
+        <li class = "date-time"> 
+          <%= event.description %>
+        </li>
+      </ul>
+    <% end %>
+    </div>
+  <% end %>
+<% end %>
