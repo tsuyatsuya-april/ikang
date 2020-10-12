@@ -32,15 +32,29 @@ class EventsController < ApplicationController
   end
 
   def update
+    if @event.update(event_update_params)
+      redirect_to root_path
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    if @event.destroy
+      redirect_to root_path
+    else
+      render "edit"
+    end
   end
 
   private 
 
   def event_params
     params.require(:event).permit(:name, :description, schedules_attributes: [:savedate, :savetime], shops_attributes: [:shop_name, :shop_url, :map_url, :comment])
+  end
+
+  def event_update_params
+    params.require(:event).permit(:name, :description, schedules_attributes: [:id, :savedate, :savetime,:_destroy], shops_attributes: [:id, :shop_name, :shop_url, :map_url, :comment, :_destroy])
   end
 
   def set_event
