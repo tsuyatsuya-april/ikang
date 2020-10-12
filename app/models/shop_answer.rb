@@ -1,0 +1,2 @@
+class ShopAnswer < ApplicationRecord
+end

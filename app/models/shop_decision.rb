@@ -1,0 +1,2 @@
+class ShopDecision < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class DateDecision < ApplicationRecord
+end

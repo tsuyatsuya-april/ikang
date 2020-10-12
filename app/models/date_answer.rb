@@ -1,0 +1,2 @@
+class DateAnswer < ApplicationRecord
+end
