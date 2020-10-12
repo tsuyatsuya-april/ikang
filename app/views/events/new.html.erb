@@ -27,6 +27,7 @@
 <br>
 <div><h3>イベント登録</h3></div>
 <%= form_for @event, local: true do |f| %>
+  <%= render "share/error_messages", model: f.object %>
   <div><p>イベント名</p></div>
   <%= f.text_field :name %>
   <div><p>詳細</p></div>
