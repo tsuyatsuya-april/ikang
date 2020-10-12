@@ -11,6 +11,9 @@
         <li class = "date-time"> 
           <%= event.description %>
         </li>
+        <li class = "date-time"> 
+          <%= link_to "編集", edit_event_path(event.id) %>
+        </li>
       </ul>
     <% end %>
     </div>

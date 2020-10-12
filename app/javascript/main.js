@@ -1,5 +1,8 @@
 const path = location.pathname;
-if(path === "/events/new" || path === "/events" || path.slice(0,7) === "/events" && path.length <= 8){
+if(path === "/events/new" || path === "/events" 
+|| path.slice(0,7) === "/events" && path.length <= 8 
+|| path.slice(0,7) === "/events" && path.slice(-4) === "edit" 
+|| path.slice(0,7) === "/events" && !path.includes('join')){
   function main (){
     console.clear();
 
