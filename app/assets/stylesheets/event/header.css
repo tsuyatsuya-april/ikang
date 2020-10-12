@@ -1,0 +1,125 @@
+.btn,
+header.header div.header__bar.row div.grid-6 a.post {
+  padding: 8px 20px;
+  font-size: 14px;
+  border: 2px solid #57C3E9;
+  color: #57C3E9;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.btn:hover,
+header.header div.header__bar.row div.grid-6 a.post:hover {
+  border-color: #9bdbf2;
+  color: #9bdbf2;
+}
+
+header.header {
+  padding: 10px;
+  border-bottom: 1px solid #D8D8D8;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  height: 62px;
+}
+
+header.header div.header__bar.row {
+  position: relative;
+}
+
+header.header div.header__bar.row h1.grid-6 {
+  font-size: 20px;
+  line-height: 41px;
+  float: left;
+}
+
+header.header div.header__bar.row h1.grid-6 a {
+  display: block;
+}
+
+header.header div.header__bar.row div.grid-6 {
+  float: right;
+  text-align: right;
+}
+
+header.header div.header__bar.row div.grid-6 a.post {
+  width: 120px;
+  display: inline-left;
+  margin-left: 10px;
+}
+
+header.header .user_nav {
+  position: relative;
+  height: 100px;
+  right: 0;
+}
+
+header.header .user_nav span {
+  top: 5px;
+  display: block;
+  float: left;
+  margin-left: 30px;
+  width: 150px;
+  height: 50px;
+  font-size: 1em;
+  cursor: pointer;
+  position: relative;
+}
+
+header.header .user_nav span:after {
+  content: '▼';
+  font-size: .7em;
+  margin-left: -4px;
+}
+
+header.header .user_nav span:hover ul {
+  color: #57C3E9;
+  display: block;
+}
+
+header.header .user_nav ul {
+  display: none;
+  position: absolute;
+  top: 46px;
+  right: 0;
+  border-left: 1px solid #d8d8d8;
+  border-right: 1px solid #d8d8d8;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header.header .user_nav ul li {
+  background-color: #f0f0f0;
+}
+
+header.header .user_nav ul li a {
+  display: block;
+  padding: 10px 20px;
+  text-align: left;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.row .grid-6 {
+  float: left;
+  margin-left: 0.9%;
+  margin-right: 0.9%;
+}
+
+.row .grid-6 {
+  width: 48.2%;
+}
+
+.row .grid-6 {
+  float: none;
+  width: 100% !important;
+  margin: 0 !important;
+  position: static !important;
+}
+
+.title-call{
+  font-weight: 800;
+}
