@@ -50,14 +50,16 @@ Things you may want to cover:
 
 # 実装予定の機能
 ・カレンダーから日付を選択する機能  
-・複数テーブル・複数レコードを登録する機能  
-・googlemapで店の地図を反映させる機能  
-・画像を投稿できる機能  
+・複数テーブル・複数レコードを登録する機能
+・モーダルウィンドウでの登録機能
+・URL生成機能    
+・googlemapで店の地図を反映させる機能
+・画像を投稿できる機能 
 ・コメント機能  
 ・日本語化機能  
 ・SNSとの連携機能  
-・URL生成機能  
-・モーダルウィンドウでの登録機能  
+  
+
 
 # DB設計
 ## users テーブル
@@ -77,40 +79,44 @@ Things you may want to cover:
 | user_id | references | foreign_key: true |
 | name      | string  | null: false     |
 | description | text  |                |
-| url       | text    |                 |
 
 ### Association
 - belongs_to :user
-- has_many :dates
-- has_many :schedules
-- has_one :decision
-- has_many :joins
+- has_many :schedules, inverse_of: :event, dependent: :destroy
+- accepts_nested_attributes_for :schedules, allow_destroy: true
+- has_many :shops, inverse_of: :event, dependent: :destroy
+- accepts_nested_attributes_for :shops, allow_destroy: true
+- has_many :joins, dependent: :destroy
+- has_one :date_decision
+- has_one :shop_decision
 - has_many :comments
-
-## schedule　テーブル
-| Column    | Type    | OPtions         |
-| --------- | ------- | --------------- |
-| event_id | references | foreign_key: true |
-| day      | save_date  | null: false     |
-| string     | save_time  | null: false     |
-
-### Association
-- belongs_to :event
-- has_one :date_answer
-- has_one :decision
 
 ## schedules　テーブル
 | Column    | Type    | OPtions         |
 | --------- | ------- | --------------- |
 | event_id | references | foreign_key: true |
-| name     | string | null: false     |
-| url      | text   | null: false     |
-| googlemap | text  | null: false     |
-| comment  | text   | null: false     |
+| savedate      | date  | null: false     |
+| savetime     | string  | null: false     |
 
 ### Association
-- belongs_to :event
-- has_one :schedule_answer
+- belongs_to :event, inverse_of: :schedules
+- validates_presence_of :event
+- has_many :date_answer
+- has_one :decision
+
+## shops　テーブル
+| Column    | Type    | OPtions         |
+| --------- | ------- | --------------- |
+| event_id | references | foreign_key: true |
+| shop_name     | string | null: false     |
+| shop_url      | text   |      |
+| map_url | text  |      |
+| comment  | text   |      |
+
+### Association
+- belongs_to :event, inverse_of: :shops
+- validates :shop_name, presence: true
+- has_many :schedule_answer
 - has_one :decision
 
 ## joins　テーブル
@@ -118,35 +124,38 @@ Things you may want to cover:
 | --------- | ------- | --------------- |
 | event_id | references | foreign_key: true |
 | nickname | string   | null: false     |
-| email    | text     | null: false     |
+| email    | text     |     |
 
 ### Association
 - belongs_to :event
-- has_many :date_answers
-- has_many :schedule_answers
+- has_many :date_answers, dependent: :destroy
+- accepts_nested_attributes_for :date_answers, allow_destroy: true
+- has_many :schedule_answers, dependent: :destroy
+- accepts_nested_attributes_for :shop_answers, allow_destroy: true
 
 ## date_answers
 | Column    | Type    | OPtions         |
 | --------- | ------- | --------------- |
 | join_id | references | foreign_key: true |
-| date_id | references | foreign_key: true |
+| schedule_id | references | foreign_key: true |
 | status | integer     | null: false    |
 
 ### Association
-- belongs_to :date
-- has_many :joins
-
-## schedule_answers
+- belongs_to :schedule
+- belongs_to :join
+- validates_presence_of :join
+## shop_answers
 | Column    | Type    | OPtions         |
 | --------- | ------- | --------------- |
 | join_id | references | foreign_key: true |
-| date_id | references | foreign_key: true |
+| shop_id | references | foreign_key: true |
 | status | integer     | null: false    |
 | vote   | integer    |                 |
 
 ### Association
-- belongs_to :schedule
-- has_many :joins
+- belongs_to :shop
+- belongs_to :join
+- validates_presence_of :join
 
 ## comments
 | Column    | Type    | OPtions         |
@@ -155,20 +164,22 @@ Things you may want to cover:
 | content | text      | null: false     |
 
 ### Association
-- belongs_to :user
+- belongs_to :event
 
-## decisions
+## date_decisions
 | Column    | Type    | OPtions         |
 | --------- | ------- | --------------- |
 | event_id  | references | foreign_key: true |
-| date | d_date         | null: false     |
-| string | d_time         | null: false     |
-| schedule_name | string | null: false     |
-| aggregation_time | time |             |
-| station | string |                    |
-| location | string |                   |
-| map     | text   |                    |
-| add_comment | text |                  |
+| schedule_id | references | foreign_key :true |
+| status | integer         | null: false     |
+
+## shop_decisions
+| Column    | Type    | OPtions         |
+| --------- | ------- | --------------- |
+| event_id  | references | foreign_key: true |
+| shop_id  | references | foreign_key: true |
+| status | integer         | null: false     |
+
 
 ### Association
 - belongs_to :event
