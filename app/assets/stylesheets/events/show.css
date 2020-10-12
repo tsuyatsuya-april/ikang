@@ -1,0 +1,92 @@
+h1.btn--orange {
+  background: #ffffff;
+  color: #eb6100;
+  
+}
+
+h1.btn--orange:hover {
+  color: #fff;
+  background-color: #eb6100;
+}
+
+h1.choice {
+  color: #fff;
+  background-color: #eb6100;
+}
+
+h1.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+h1.btn--circle {
+  border-radius: 50%;
+  border: 2px solid #e0d7dc;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+}
+
+h1{
+  font-size: 25px;
+  text-align: center;
+}
+
+#open, #close, #edit-open, #edit-close {
+  cursor: pointer;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  padding: 12px 0;
+  margin: 16px auto 0;
+}
+
+#mask, #edit-mask {
+  background: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#modal, #edit-modal{
+  background: #fff;
+  width: 700px;
+  padding: 20px;
+  position:fixed;/* 階層を上にする */
+  height:80%;/* モーダルの高さ */
+  top:50%;/* bodyの上から50%分ずらす */
+  left:50%;/* bodyの左から50%分ずらす */
+  transform:translate(-50%,-50%);/* 指定した位置から真ん中にずらす */
+  overflow-y:scroll;
+}
+
+#modal > p, #edit-modal > p{
+  margin: 0 0 20px;
+}
+
+#mask.hidden, #edit-mask.hidden{
+  display: none;
+}
+
+#modal.hidden, #edit-modal.hidden{
+  transform: translate(0, -500px);
+}
+
+.date-index-status, .shop-index-status{
+  display: none;
+}
+
+.index-status-form{
+  font-size: 25px;
+  font-weight: 900;
+  color: #eb6100;
+}
+
+.cross{
+  font-size: 45px;
+}
