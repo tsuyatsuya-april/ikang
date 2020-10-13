@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event.id)
     else
-      render 'new'
+      render "new"
     end
   end
 
@@ -39,6 +39,8 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @schedule = Schedule.new
+    @shop = Shop.new
   end
 
   def update

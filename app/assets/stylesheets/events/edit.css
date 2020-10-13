@@ -22,3 +22,7 @@
   width: 150px;
   font-size: 12px;
 }
+
+#edit-schedule-form{
+  display: none;
+}

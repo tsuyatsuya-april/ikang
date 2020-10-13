@@ -1,5 +1,10 @@
 class SchedulesController < ApplicationController
 
+  def create
+    
+
+  end
+
   def destroy
     @schedule = Schedule.find(params[:id])
     if @schedule.destroy
