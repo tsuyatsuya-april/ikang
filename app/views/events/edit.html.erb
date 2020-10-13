@@ -1,10 +1,10 @@
 <%= render "header" %>
-<table id="days">
+<table id="edit-days">
   <thead>
     <tr>
-      <th id="prev">&laquo;</th>
-      <th id="title" colspan="5">2020/05</th>
-      <th id="next">&raquo;</th>
+      <th id="edit-prev">&laquo;</th>
+      <th id="edit-title" colspan="5">2020/05</th>
+      <th id="edit-next">&raquo;</th>
     </tr> 
     <tr>
       <th>Sun</th>
@@ -21,7 +21,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <td id="today" colspan="7">Today</td>
+      <td id="edit-today" colspan="7">Today</td>
     </tr>
   </tfoot>
 </table>
@@ -35,14 +35,14 @@
   <%= f.text_area :description %>
 
   <div><h3>日程</h3></div>
-  <div id="select-days">
-    <%= f.fields_for :schedules do |schedule_fields| %>
-      
-      <ul id="add-date-style">
-        <li class = "date-input">
+  <div id="edit-select-days">
+  <% count = 3 %>
+    <%= f.fields_for :schedules, @event.schedules do |schedule_fields| %>  
+      <ul id="edit-add-date-style">
+        <li class = "edit-date-input">
           <%= schedule_fields.date_field :savedate %>
         </li>
-        <li class = "date-time"> 
+        <li class = "edit-date-time"> 
           <%= schedule_fields.select :savetime, [
             ['00:00~','0:00'], ['00:30~', '0:30'], 
             ['01:00~', '1:00'],['01:30~', '1:30'],
@@ -69,12 +69,13 @@
             ['22:00~', '22:00'],['22:30~', '22:30'],
             ['23:00~', '23:00'],['23:30~', '23:30'],
             ], 
-              {include_blank: '選択',selected:'19:00'}, class: 'date-time' %>
+              {include_blank: '選択',selected:'19:00'}, class: 'edit-date-time' %>
         </li>
-        <li id = "delete" >
-          <p>削除</p>
+        <li id = "edit-delete" >
+          <%= link_to "日程削除", event_schedule_path(params[:id],schedule_fields.object.id), method: :delete %>
         </li>
       </ul>
+      <% count = count + 1 %>
     <% end %>
    </div>
    <div><h3>店名</h3></div>
@@ -87,6 +88,7 @@
     <%= shop_fields.text_field :map_url %>
     <div><p>コメント</p></div>
     <%= shop_fields.text_field :comment %>
+    <%= link_to "お店削除", event_shop_path(params[:id],shop_fields.object.id), method: :delete %>
   <% end %>
   
   <%= f.submit "Submit" %>
