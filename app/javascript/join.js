@@ -424,5 +424,13 @@ if(path.length >= 7 && path.slice(0,7) === "/events"){
       }
     }
   }
+
+  function check_name() {
+      const userName = document.getElementById('join-user');
+      if (userName.value == ""){
+        window.alert('名前を入力してください');
+        return false;
+      }
+  }
   window.addEventListener("load", join);
 }
