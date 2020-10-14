@@ -18,7 +18,8 @@ if(path === "/events/new" || path === "/events"
 
     
 
-    {
+    { 
+      newShopAdd();
       const today = new Date();
       let year = today.getFullYear();
       let month = today.getMonth();
@@ -261,20 +262,43 @@ if(path === "/events/new" || path === "/events"
       }
       formSubmitJudge();
     // フォームがゼロの時提出できないようにする為の処理
-    function formSubmitJudge() {
-      document.getElementById("create-data-submit").addEventListener("click", checkFormNumber);
+      function formSubmitJudge() {
+        document.getElementById("create-data-submit").addEventListener("click", checkFormNumber);
 
-      function checkFormNumber(event) {
-        if(document.querySelectorAll("#add-date-style").length === 0) {
-          event.preventDefault();
-          alert("カレンダーの日付を選択した後、時間の設定をしてください");
+        function checkFormNumber(event) {
+          if(document.querySelectorAll("#add-date-style").length === 0) {
+            event.preventDefault();
+            alert("カレンダーの日付を選択した後、時間の設定をしてください");
+          }
         }
       }
-    }
-    }
-    
+      
+      function newShopAdd(){
+        const shopParent = document.getElementById("new-shop-top");
+        const addShopBtn = document.getElementById("shop-add-btn");
+        let currentShopLength = document.querySelectorAll("#new-shop").length;
+        let nextNum = currentShopLength + 1;
+        let shopHtml = `
+          <br>
+          <div id="new-shop">
+            <div><p>店名</p></div>
+            <div class="field_with_errors">
+              <input type="text" value="" name="event[shops_attributes][${nextNum}][shop_name]" id="event_shops_attributes_${nextNum}_shop_name">
+            </div>
+            <div><p>店のURL</p></div>
+            <input type="text" value="" name="event[shops_attributes][${nextNum}][shop_url]" id="event_shops_attributes_${nextNum}_shop_url">
+            <div><p>地図のURL</p></div>
+            <input type="text" value="" name="event[shops_attributes][${nextNum}][map_url]" id="event_shops_attributes_${nextNum}_map_url">
+            <div><p>コメント</p></div>
+            <input type="text" value="" name="event[shops_attributes][${nextNum}][comment]" id="event_shops_attributes_${nextNum}_comment">
+          </div>
+          <br>`;
+          addShopBtn.onclick = function(){
+            shopParent.insertAdjacentHTML("beforeend", shopHtml);;
+          };
+      }
+    } 
   };
   window.addEventListener("load", main);
 }
-
-
+      

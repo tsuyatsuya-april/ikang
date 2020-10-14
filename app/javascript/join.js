@@ -1,6 +1,6 @@
 const path = location.pathname;
 const query = location.search;
-if(path.length >= 7 && path.slice(0,7) === "/events"){
+if(path.length >= 8 && path.slice(0,7) === "/events"){
   function join(){
     manySaveOk();
     DateStatusValue();

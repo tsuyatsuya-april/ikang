@@ -79,15 +79,22 @@
    </div>
    <div><h3>店名</h3></div>
   <%= f.fields_for :shops do |shop_fields| %>
-    <div><p>店名</p></div>
-    <%= shop_fields.text_field :shop_name %>
-    <div><p>店のURL</p></div>
-    <%= shop_fields.text_field :shop_url %>
-    <div><p>地図のURL</p></div>
-    <%= shop_fields.text_field :map_url %>
-    <div><p>コメント</p></div>
-    <%= shop_fields.text_field :comment %>
+    <div id="new-shop-top">
+      <div id="new-shop">
+        <div><p>店名</p></div>
+        <%= shop_fields.text_field :shop_name %>
+        <div><p>店のURL</p></div>
+        <%= shop_fields.text_field :shop_url %>
+        <div><p>地図のURL</p></div>
+        <%= shop_fields.text_field :map_url %>
+        <div><p>コメント</p></div>
+        <%= shop_fields.text_field :comment %>
+      </div>
+    </div>
   <% end %>
-  
   <%= f.submit "Submit" %>
+  <br>
+  <div id="shop-add-btn">
+    <h3>お店追加</h3>
+  </div>
 <% end %>

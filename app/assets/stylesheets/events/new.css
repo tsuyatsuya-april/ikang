@@ -80,3 +80,8 @@ ul {
   width: 150px;
   font-size: 12px;
 }
+
+#shop-add-btn{
+  color: red;
+  font-weight: bold;
+}
