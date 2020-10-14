@@ -19,8 +19,9 @@ class SchedulesController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:event_id])
     @schedule = Schedule.find(params[:id])
-    if @schedule.destroy
+    if @schedule.destroy && @event.schedules.length > 1
       redirect_to edit_event_path(params[:event_id])
     else
       render "events/edit"

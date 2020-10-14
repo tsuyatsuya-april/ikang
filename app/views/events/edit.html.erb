@@ -37,7 +37,6 @@
 
   <div><h3>日程</h3></div>
   <div id="edit-select-days">
-  <% count = 3 %>
     <%= f.fields_for :schedules, @event.schedules do |schedule_fields| %>  
       <ul id="edit-add-date-style">
         <li class = "edit-date-input">
@@ -78,20 +77,26 @@
       </ul>
     <% end %>
     <p><b>日程を追加したい場合はカレンダーの日付をクリック下さい</b></p>
-   </div>
-   <div><h3>店名</h3></div>
+  </div>
+  <div><h3>店名</h3></div>
+  <div id="edit-shop-add-btn">
+    <h3>お店追加</h3>
+  </div>
   <%= f.fields_for :shops do |shop_fields| %>
-    <div><p>店名</p></div>
-    <%= shop_fields.text_field :shop_name %>
-    <div><p>店のURL</p></div>
-    <%= shop_fields.text_field :shop_url %>
-    <div><p>地図のURL</p></div>
-    <%= shop_fields.text_field :map_url %>
-    <div><p>コメント</p></div>
-    <%= shop_fields.text_field :comment %>
-    <%= link_to "お店削除", event_shop_path(params[:id],shop_fields.object.id), method: :delete %>
+    <div id="edit-shop-top">
+      <div id="edit-shop">
+        <div><p>店名</p></div>
+        <%= shop_fields.text_field :shop_name %>
+        <div><p>店のURL</p></div>
+        <%= shop_fields.text_field :shop_url %>
+        <div><p>地図のURL</p></div>
+        <%= shop_fields.text_field :map_url %>
+        <div><p>コメント</p></div>
+        <%= shop_fields.text_field :comment %>
+        <%= link_to "お店削除", event_shop_path(params[:id],shop_fields.object.id), method: :delete %>
+      </div>
+    </div>
   <% end %>
-  
   <%= f.submit "Submit" %>
 <% end %>
 <%= link_to "イベント自体削除",event_path(params[:id]), method: :delete %>
@@ -129,4 +134,21 @@
       ], 
         {include_blank: "選択",selected:"19:00"}, class: "only-time-input" %>
   </div>
+   <%= schedule.submit "Submit" %>
+<% end %>
+
+<%= form_with model: @shop, url:event_shops_path(@event.id), id: "edit-shop-form", local: true do |shop| %>
+  <div id="edit-shop-top">
+      <div id="edit-shop">
+        <div><p>店名</p></div>
+        <%= shop.text_field :shop_name, id:"only-shop-name" %>
+        <div><p>店のURL</p></div>
+        <%= shop.text_field :shop_url %>
+        <div><p>地図のURL</p></div>
+        <%= shop.text_field :map_url %>
+        <div><p>コメント</p></div>
+        <%= shop.text_field :comment %>
+      </div>
+    </div>
+  <%= shop.submit "Submit" %>
 <% end %>

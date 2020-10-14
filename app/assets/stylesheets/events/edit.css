@@ -23,6 +23,12 @@
   font-size: 12px;
 }
 
-#edit-schedule-form, #edit-pass{
+#edit-schedule-form, #edit-pass, #edit-shop-form{
   display: none;
+}
+
+#edit-shop-add-btn{
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
 }
