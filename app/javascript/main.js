@@ -20,6 +20,7 @@ if(path === "/events/new" || path === "/events"
 
     { 
       newShopAdd();
+      shopDelete();
       const today = new Date();
       let year = today.getFullYear();
       let month = today.getMonth();
@@ -247,6 +248,7 @@ if(path === "/events/new" || path === "/events"
           selectHTML.appendChild(optionHTML);
         }
         removeHTML();
+        shopDelete();
       }
       
       // 削除ボタンの実装
@@ -256,30 +258,33 @@ if(path === "/events/new" || path === "/events"
         let targetNum = targetList.length;
         for (let i=0; i < targetNum; i++){
           targetList[i].onclick = function(){
-            return targetUl[i].remove();
-          };
-        };
-      }
-      formSubmitJudge();
-    // フォームがゼロの時提出できないようにする為の処理
-      function formSubmitJudge() {
-        document.getElementById("create-data-submit").addEventListener("click", checkFormNumber);
-
-        function checkFormNumber(event) {
-          if(document.querySelectorAll("#add-date-style").length === 0) {
-            event.preventDefault();
-            alert("カレンダーの日付を選択した後、時間の設定をしてください");
+            let conformLength = document.querySelectorAll("#add-date-style").length;
+            if (conformLength != 1){
+              return targetUl[i].remove();
+            }
           }
-        }
-      }
+        };
+      };
+  
+      // formSubmitJudge();
+    // フォームがゼロの時提出できないようにする為の処理
+      // function formSubmitJudge() {
+      //   document.getElementById("create-data-submit").addEventListener("click", checkFormNumber);
+
+      //   function checkFormNumber(event) {
+      //     if(document.querySelectorAll("#add-date-style").length === 0) {
+      //       event.preventDefault();
+      //       alert("カレンダーの日付を選択した後、時間の設定をしてください");
+      //     }
+      //   }
+      // }
       
       function newShopAdd(){
         const shopParent = document.getElementById("new-shop-top");
         const addShopBtn = document.getElementById("shop-add-btn");
         let currentShopLength = document.querySelectorAll("#new-shop").length;
-        let nextNum = currentShopLength + 1;
+        let nextNum = currentShopLength;
         let shopHtml = `
-          <br>
           <div id="new-shop">
             <div><p>店名</p></div>
             <div class="field_with_errors">
@@ -291,11 +296,27 @@ if(path === "/events/new" || path === "/events"
             <input type="text" value="" name="event[shops_attributes][${nextNum}][map_url]" id="event_shops_attributes_${nextNum}_map_url">
             <div><p>コメント</p></div>
             <input type="text" value="" name="event[shops_attributes][${nextNum}][comment]" id="event_shops_attributes_${nextNum}_comment">
-          </div>
-          <br>`;
-          addShopBtn.onclick = function(){
-            shopParent.insertAdjacentHTML("beforeend", shopHtml);;
+            <p id="shop-delete">お店削除</p>
+          </div>`;
+        addShopBtn.onclick = function(){
+          shopParent.insertAdjacentHTML("beforeend", shopHtml);
+          shopDelete();
+        };
+        
+      }
+
+      function shopDelete(){
+        let shopParent = document.querySelectorAll("#new-shop");
+        let shopDeleteBtn = document.querySelectorAll("#shop-delete");
+        let shopParentLength = shopParent.length;
+        for (let i=0; i < shopParentLength; i++){
+          shopDeleteBtn[i].onclick = function(){
+            let conformShopLength = document.querySelectorAll("#new-shop").length;
+            if(conformShopLength != 1){  
+              return shopParent[i].remove();
+            }
           };
+        };
       }
     } 
   };

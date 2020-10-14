@@ -84,4 +84,10 @@ ul {
 #shop-add-btn{
   color: red;
   font-weight: bold;
+  cursor: pointer;
+}
+
+#shop-delete{
+  color: blue;
+  cursor: pointer;
 }
