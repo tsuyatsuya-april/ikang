@@ -2,7 +2,8 @@
     const passWord = document.getElementById("edit-pass").innerHTML;
     if(passWord == "イベント編集ページです"){
         console.clear();
-        {
+        { 
+          
           const today = new Date();
           let year = today.getFullYear();
           let month = today.getMonth();
@@ -123,6 +124,7 @@
           });
           
           createCalendar();
+          
           function getDays() {
             let myTbl = document.getElementById("edit-days");
             for (let i=0;i<myTbl.rows.length;i++){
@@ -157,112 +159,17 @@
             setDate.setAttribute("value", date_string);
             scheduleForm.submit();
           }
-          //HTML要素を作成して、追加するメソッド
-        //   function createHTML (date_string) {
-        //     const ParentNode = document.getElementById("edit-select-days");
-
-        //     //選択フォームを作成する元となるul要素を生成
-        //     const SecondParentUl = document.createElement("ul");
-        //     SecondParentUl.setAttribute("id", "edit-add-date-style");
-        //     let ulElementNum = document.querySelectorAll("#edit-add-date-style").length;
-
-        //     //inputの親となるli要素の生成
-        //     const inputParentLi = document.createElement("li");
-        //     inputParentLi.setAttribute("class", "edit-date-input");
-
-        //     //input要素の生成
-        //     const inputHTML = document.createElement("input");
-        //     inputHTML.setAttribute("id", `edit_date_input_${ulElementNum}`);
-        //     inputHTML.setAttribute("name", `event[schedules_attributes][${ulElementNum}][savedate]`);
-        //     inputHTML.setAttribute("value", date_string);
-        //     inputHTML.setAttribute("type", "date");
-        //     inputHTML.setAttribute("style", "width:150px;");
-        //     inputHTML.setAttribute("style", "font-size:12px;");
-
-        //     //selectの親となるli要素の生成
-        //     const selectParentLi = document.createElement("li");
-        //     selectParentLi.setAttribute("class", "edit-date-time");
-
-        //     //select要素の生成
-        //     const selectHTML = document.createElement("select");
-        //     selectHTML.setAttribute("name", `event[schedules_attributes][${ulElementNum}][savetime]`);
-        //     selectHTML.setAttribute("id", `event_schedules_attributes_${ulElementNum}_savetime`);
-        //     selectHTML.setAttribute("style", `width:80px;`);
-            
-            
-        //     //削除の親となるli要素の生成
-        //     const deleteParentLi = document.createElement("li");
-        //     deleteParentLi.setAttribute("id", "edit-delete");
-
-        //     // 削除機能をつけるa要素の生成
-        //     const deleteHTML = document.createElement("p");
-        //     deleteHTML.setAttribute("style", `color:blue;`);
-        //     deleteHTML.innerText = "削除";
-        //     // 要素を追加
-        //     ParentNode.appendChild(SecondParentUl);
-        //     SecondParentUl.appendChild(inputParentLi);
-        //     SecondParentUl.appendChild(selectParentLi);
-        //     SecondParentUl.appendChild(deleteParentLi);
-        //     inputParentLi.appendChild(inputHTML);
-        //     selectParentLi.appendChild(selectHTML);
-        //     deleteParentLi.appendChild(deleteHTML);
-            
-        //     // option要素の追加
-
-        //     // option要素の作成（下記オリジンを複製してループ内の要素を追加）
-        //     const optionOriginHTML = document.createElement("option");
-        //     for (let i=0;i<49;i++){
-        //       let optionHTML = optionOriginHTML.cloneNode(true);
-        //       //optionの選択肢の作成 i÷２をした時の商を時間、余りを分として表示させたい。例)12:00
-        //       let selectHour = Math.floor(i/2);
-        //       let selectMinute = Math.floor(i%2);
-        //       let optionText = `${String(selectHour)}:${String(selectMinute*30).padStart(2, "0")} ~`;
-        //       let optionValue = `${String(selectHour).padStart(2, "0")}:${String(selectMinute*30).padStart(2, "0")}`;
-              
-        //       if (i === 0){
-        //         // 最初の未選択の場合の項目を作成
-        //         optionHTML.innerText = "";
-        //         optionHTML.setAttribute("value", "選択");
-        //       } else if(i=== 39){
-        //         // 反映した時に表示したい時刻を設定するため
-        //         optionHTML.setAttribute("value", optionValue);
-        //         optionHTML.setAttribute("selected", true);
-        //         optionHTML.innerText = optionText;
-        //       } else {
-        //         // 通常状態の設定
-        //         optionHTML.setAttribute("value", optionValue);
-        //         optionHTML.innerText = optionText;
-        //       }
-        //       // select要素にoption要素を追加
-        //       selectHTML.appendChild(optionHTML);
-        //     }
-        //     removeHTML();
-        //   }
-          
-        //   // 削除ボタンの実装
-        //   function removeHTML(){
-        //     let targetList = document.querySelectorAll("#edit-delete");
-        //     let targetUl = document.querySelectorAll("#edit-add-date-style");
-        //     let targetNum = targetList.length;
-        //     for (let i=0; i < targetNum; i++){
-        //       targetList[i].onclick = function(){
-        //         return targetUl[i].remove();
-        //       };
-        //     };
-        //   }
-        //   formSubmitJudge();
-        // // フォームがゼロの時提出できないようにする為の処理
-        // function formSubmitJudge() {
-        //   document.getElementById("create-data-submit").addEventListener("click", checkFormNumber);
-
-        //   function checkFormNumber(event) {
-        //     if(document.querySelectorAll("#edit-add-date-style").length === 0) {
-        //       event.preventDefault();
-        //       alert("カレンダーの日付を選択した後、時間の設定をしてください");
-        //     }
-        //   }
-        // }
-      } 
+        }
+          function editShopAdd(){
+            const trigger = document.getElementById("edit-shop-add-btn");
+            const shopForm = document.getElementById("edit-shop-form")
+            trigger.onclick()= function(){
+              let targetShopName = document.getElementById("only-shop-name");
+              targetShopName.setAttribute("value", "店名登録お願いします");
+              shopForm.submit();
+            }
+          }
+        } 
     } 
   };
   window.addEventListener("load", edit);
