@@ -278,4 +278,3 @@ if(path === "/events/new" || path === "/events"
 }
 
 
-

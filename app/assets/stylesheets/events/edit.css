@@ -23,6 +23,6 @@
   font-size: 12px;
 }
 
-#edit-schedule-form{
+#edit-schedule-form, #edit-pass{
   display: none;
 }

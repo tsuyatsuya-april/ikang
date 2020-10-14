@@ -8,6 +8,7 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("../main")
+require("../main_edit")
 require("../join")
 
 
