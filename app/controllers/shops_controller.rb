@@ -13,7 +13,7 @@ class ShopsController < ApplicationController
       end
       redirect_to edit_event_path(params[:event_id])
     else
-      render "events/edit"
+      redirect_to root_path
     end
   end
 
@@ -23,7 +23,7 @@ class ShopsController < ApplicationController
     if @shop.destroy
       redirect_to edit_event_path(params[:event_id])
     else
-      render "events/edit"
+      redirect_to root_path
     end
   end
 
