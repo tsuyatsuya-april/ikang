@@ -1,3 +1,4 @@
+<%= render "header" %>
 <h1>イベント詳細情報</h1>
 <div>
   <p>イベント名: <%= @event.name %></p>
@@ -150,13 +151,13 @@
       <div id="close">
         閉じる
       </div>
-      <%= form_with model: @join, url:event_joins_path(@event.id), id:"join-form" , local: true do |f| %>
+      <%= form_with model: @join, url:event_joins_path(@event.id), id:"join-form",  local: true do |f| %>
         <%= render "share/error_messages", model: f.object %>
         <div>
           <label>ユーザー名</label>
         </div>
         <div class="join-users">
-          <%= f.text_field :nickname, placeholder:"ニックネームを入力ください"%>
+          <%= f.text_field :nickname, id:"join-user",placeholder:"ニックネームを入力ください"%>
         </div>
         <label>Eメール</label>
         <div class="join-email">
@@ -213,8 +214,17 @@
             <% end %>
           </tbody>
         </table>
-        <%= f.submit "Submit" %>
+        <%= f.submit "Submit", :onclick => "return check_name()" %>
       <% end %>
+      <script>
+        function check_name() {
+          const userName = document.getElementById("join-user");
+          if (userName.value == ""){
+            window.alert("名前を入力してください");
+            return false;
+          }
+        }
+      </script>
     </section>
   </div>
 <% else %>
