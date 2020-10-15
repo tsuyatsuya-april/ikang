@@ -1,16 +1,22 @@
 <header class="header">
   <div class="header__bar row">
-    <h1 class="grid-6"><%= link_to "何だか今日もいい幹事〜", root_path %></h1>
+    <div class="title">
+      <%= link_to root_path, class: "header-link" do %>
+        <h3 class="grid-6" >
+          何だか今日も <span id="title-main">いい幹事〜</span>⭐️
+        </h3>
+      <% end %>
+    </div>
     <% if user_signed_in? %>
-      <div class="user_nav grid-6">
+      <div class="grid-6">
         <%= current_user.nickname %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <%= link_to "イベント登録", new_event_path, class: "post" %>
+        <%= link_to "イベント登録", new_event_path, class: "post header-link" %>
+        <%= link_to "ログアウト", destroy_user_session_path, class:"header-link", method: :delete %>
       </div>
     <% else %>
       <div class="grid-6">
-        <%= link_to "ログイン", new_user_session_path, class: "post"%>
-        <%= link_to "新規登録", new_user_registration_path, class: "post" %>
+        <%= link_to "ログイン", new_user_session_path, class: "post header-link"%>
+        <%= link_to "新規登録", new_user_registration_path, class: "post header-link" %>
       </div>
     <% end %>
   </div>

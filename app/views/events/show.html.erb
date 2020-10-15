@@ -153,143 +153,164 @@
       </div>
       <%= form_with model: @join, url:event_joins_path(@event.id), id:"join-form",  local: true do |f| %>
         <%= render "share/error_messages", model: f.object %>
-        <div>
-          <label>ユーザー名</label>
+        <div id="join-box">
+          <div id="join-name-label">
+            <label>ユーザー名</label>
+          </div>
+          <div class="join-users">
+            <%= f.text_field :nickname, id:"join-user",placeholder:"ニックネームを入力ください"%>
+          </div>
+          <div id="join-email-label">
+            <label>Eメール</label>
+          </div>
+          <div class="join-email">
+            <%= f.text_field :email,id:"join-email", placeholder:"emailを記入ください"%>
+          </div>
         </div>
-        <div class="join-users">
-          <%= f.text_field :nickname, id:"join-user",placeholder:"ニックネームを入力ください"%>
-        </div>
-        <label>Eメール</label>
-        <div class="join-email">
-          <%= f.text_field :email, placeholder:"emailを記入ください"%>
-        </div>
-        <h1>日程選択</h1>
-        <table>
-          <tbody>
-            
-            <% @event.schedules.each do |et| %>
-              <%= f.fields_for :date_answers do |date_fields| %>  
-                <tr >
-                  <th id="join-schedules">
-                    <%= et.savedate %>: <%= et.savetime %>
-                  </th>
-                  <td class="schedule-vote">
-                    <%= date_fields.hidden_field :schedule_id,class:"schedule-id", value: et.id %>
-                    <%= date_fields.hidden_field :status, id:"schedule-status",class:"schedule-vote" %>
-                    <div id="shop-change-status">
-                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="date-yes">◯</h1>
-                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice" id="date-delta">△</h1>
-                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="date-no">×</h1>
-                    </div>
-                  </td>
-                </tr>
+        <div id="date-answer-box">
+          <h1 id="date-answer-title">日程選択</h1>
+          <table id="date-answer-table">
+            <tbody>
+              <% @event.schedules.each do |et| %>
+                <%= f.fields_for :date_answers do |date_fields| %>  
+                  <tr >
+                    <th id="join-schedules">
+                      <%= et.savedate %>: <%= et.savetime %>
+                    </th>
+                    <td class="schedule-vote">
+                      <%= date_fields.hidden_field :schedule_id,class:"schedule-id", value: et.id %>
+                      <%= date_fields.hidden_field :status, id:"schedule-status",class:"schedule-vote" %>
+                      <div id="shop-change-status">
+                        <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="date-yes">◯</h1>
+                        <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice" id="date-delta">△</h1>
+                        <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="date-no">×</h1>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
-            <% end %>
-          </tbody>
-        </table>
-        <h1>店舗選択</h1>
-        <table>
-          <tbody> 
-            <% @event.shops.each do |es| %>
-              <%= f.fields_for :shop_answers do |shop_fields| %>
-                <tr id="join-shops">
-                  <th class="shop-label">
-                    <%= es.shop_name %> URL:<%= es.shop_url %>
-                  </th>
-                  <td>
-                    <%= shop_fields.hidden_field :shop_id,class:"shop-id", value: es.id %>
-                    <%= shop_fields.hidden_field :status, id:"shops-status" %>
-                    <%= shop_fields.hidden_field :vote, id:"shops-vote" %>
-                    <div id="shop-change-status">
-                      <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="shop-yes">◯</h1>
-                      <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice" id="shop-delta">△</h1>
-                      <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="shop-no">×</h1>
-                    </div>
-                    <div id="shop-change-vote">
-                      <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="shop-vote">一番</h1>
-                    </div>
-                  </td>
-                </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="shop-answer">
+          <h1 id="shop-answer-title">店舗選択</h1>
+          <table id="shop-answer-table">
+            <tbody> 
+              <% @event.shops.each do |es| %>
+                <%= f.fields_for :shop_answers do |shop_fields| %>
+                  <tr id="join-shops">
+                    <th class="shop-label">
+                      <%= es.shop_name %> URL:<%= es.shop_url %>
+                    </th>
+                    <td>
+                      <%= shop_fields.hidden_field :shop_id,class:"shop-id", value: es.id %>
+                      <%= shop_fields.hidden_field :status, id:"shops-status" %>
+                      <%= shop_fields.hidden_field :vote, id:"shops-vote" %>
+                      <div id="shop-change-status">
+                        <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="shop-yes">◯</h1>
+                        <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice" id="shop-delta">△</h1>
+                        <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="shop-no">×</h1>
+                      </div>
+                      <div id="shop-change-vote">
+                        <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="shop-vote">一番</h1>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
-            <% end %>
-          </tbody>
-        </table>
-        <%= f.submit "Submit", :onclick => "return check_name()" %>
-      <% end %>
-      <script>
-        function check_name() {
-          const userName = document.getElementById("join-user");
-          if (userName.value == ""){
-            window.alert("名前を入力してください");
-            return false;
+            </tbody>
+          </table>
+        </div>
+        <div id="join-submit-box">
+          <%= f.submit "Submit", :onclick => "return check_name()" %>
+        </div>
+        <script>
+          function check_name() {
+            const userName = document.getElementById("join-user");
+            if (userName.value == ""){
+              window.alert("名前を入力してください");
+              return false;
+            }
           }
-        }
-      </script>
+        </script>
+      <% end %>
     </section>
   </div>
 <% else %>
   <%= form_with model: @join, url:event_join_path(@event.id, @join.id), id:"join-edit-form" , local: true do |f| %>
     <%= render "share/error_messages", model: f.object %>
-    <div>
-      <label>ユーザー名</label>
+    <div id="join-box">
+      <div id="join-name-label">
+        <label>ユーザー名</label>
+      </div>
+      <div class="join-users">
+        <%= f.text_field :nickname,id:"join-user", placeholder:"ニックネームを入力ください"%>
+      </div>
+      <div id="join-email">
+        <label>Eメール</label>
+      </div>
+      <div class="join-email">
+        <%= f.text_field :email,id:"join-email", placeholder:"emailを記入ください"%>
+      </div>
+      <div id="date-answer-box">
+        <h1 id="date-answer-title">日程選択</h1>
+        <table id="date-answer-table">
+          <tbody>
+            <%= f.fields_for :date_answers, @join.date_answers do |date_edit_fields| %>  
+              <tr >
+                <th id="join-schedules">
+                  <span id="trans-savedate"></span>:<span id="trans-savetime"></span>
+                </th>  
+                <td class="schedule-vote">
+                  <%= date_edit_fields.hidden_field :id,class:"date-answers-id" %>
+                  <%= date_edit_fields.hidden_field :schedule_id,class:"schedule-edit-id" %>
+                  <%= date_edit_fields.hidden_field :status, id:"schedule-edit-status",class:"schedule-vote" %>
+                  <div id="shop-change-status">
+                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="date-edit-yes">◯</h1>
+                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice" id="date-edit-delta">△</h1>
+                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="date-edit-no">×</h1>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div id="shop-answer">
+        <h1 id="shop-answer-title">店舗選択</h1>
+        <table id="shop-answer-table">
+          <tbody> 
+            <%= f.fields_for :shop_answers, @join.shop_answers do |shop_edit_fields| %>
+              <tr id="join-shops">
+                <th class="shop-label">
+                  <span id="trans-shop-name"></span><br>
+                  <span id="trans-shop-url"></span>
+                </th>
+                <td>
+                  <%= shop_edit_fields.hidden_field :id,class:"shop-answers-id" %>
+                  <%= shop_edit_fields.hidden_field :shop_id,class:"shop-edit-id" %>
+                  <%= shop_edit_fields.hidden_field :status, id:"shops-edit-status" %>
+                  <%= shop_edit_fields.hidden_field :vote, id:"shops-edit-vote" %>
+                  <div id="shop-change-status">
+                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="shop-edit-yes">◯</h1>
+                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice" id="shop-edit-delta">△</h1>
+                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="shop-edit-no">×</h1>
+                  </div>
+                  <div id="shop-change-vote">
+                    <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="shop-edit-vote">一番</h1>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div id="join-submit-box">
+        <%= f.submit "Submit" %>
+      </div>
+    <% end %>
+    <div id="join-delete-btn">
+      <%= link_to "削除",event_join_path(@event.id, @join.id), method: :delete %>
     </div>
-    <div class="join-users">
-      <%= f.text_field :nickname, placeholder:"ニックネームを入力ください"%>
-    </div>
-    <label>Eメール</label>
-    <div class="join-email">
-      <%= f.text_field :email, placeholder:"emailを記入ください"%>
-    </div>
-    <h1>日程選択</h1>
-    <table>
-      <tbody>
-        <%= f.fields_for :date_answers, @join.date_answers do |date_edit_fields| %>  
-          <tr >
-            <th id="join-schedules">
-              <span id="trans-savedate"></span>:<span id="trans-savetime"></span>
-            </th>  
-            <td class="schedule-vote">
-              <%= date_edit_fields.hidden_field :id,class:"date-answers-id" %>
-              <%= date_edit_fields.hidden_field :schedule_id,class:"schedule-edit-id" %>
-              <%= date_edit_fields.hidden_field :status, id:"schedule-edit-status",class:"schedule-vote" %>
-              <div id="shop-change-status">
-                <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="date-edit-yes">◯</h1>
-                <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice" id="date-edit-delta">△</h1>
-                <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="date-edit-no">×</h1>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <h1>店舗選択</h1>
-    <table>
-      <tbody> 
-        <%= f.fields_for :shop_answers, @join.shop_answers do |shop_edit_fields| %>
-          <tr id="join-shops">
-            <th class="shop-label">
-              <span id="trans-shop-name"></span><br>
-              <span id="trans-shop-url"></span>
-            </th>
-            <td>
-              <%= shop_edit_fields.hidden_field :id,class:"shop-answers-id" %>
-              <%= shop_edit_fields.hidden_field :shop_id,class:"shop-edit-id" %>
-              <%= shop_edit_fields.hidden_field :status, id:"shops-edit-status" %>
-              <%= shop_edit_fields.hidden_field :vote, id:"shops-edit-vote" %>
-              <div id="shop-change-status">
-                <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="shop-edit-yes">◯</h1>
-                <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice" id="shop-edit-delta">△</h1>
-                <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="shop-edit-no">×</h1>
-              </div>
-              <div id="shop-change-vote">
-                <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow" id="shop-edit-vote">一番</h1>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= f.submit "Submit" %>
-  <% end %>
-  <%= link_to "削除",event_join_path(@event.id, @join.id), method: :delete %>
+  </div>
 <% end %>

@@ -1,21 +1,23 @@
 <%= render "header" %>
-
-<% if @events %>
-  <% @events.each do |event| %>
-    <div id="select-days">
-    <%= link_to event_path(event.id) do%>
-      <ul id="add-date-style">
-        <li class = "date-input">
-          <%= event.name %>
-        </li>
-        <li class = "date-time"> 
-          <%= event.description %>
-        </li>
-        <li class = "date-time"> 
-          <%= link_to "編集", edit_event_path(event.id) %>
-        </li>
-      </ul>
+<div class="main">
+  <>
+  <% if @events %>
+    <% @events.each do |event| %>
+      <div id="select-days">
+      <%= link_to event_path(event.id) do%>
+        <ul id="add-date-style">
+          <li class = "date-input">
+            <%= event.name %>
+          </li>
+          <li class = "date-time"> 
+            <%= event.description %>
+          </li>
+          <li class = "date-time"> 
+            <%= link_to "編集", edit_event_path(event.id) %>
+          </li>
+        </ul>
+      <% end %>
+      </div>
     <% end %>
-    </div>
   <% end %>
-<% end %>
+</div>
