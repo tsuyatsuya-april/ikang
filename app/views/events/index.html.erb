@@ -1,23 +1,33 @@
 <%= render "header" %>
 <div class="main">
-  <>
-  <% if @events %>
-    <% @events.each do |event| %>
-      <div id="select-days">
-      <%= link_to event_path(event.id) do%>
-        <ul id="add-date-style">
-          <li class = "date-input">
-            <%= event.name %>
-          </li>
-          <li class = "date-time"> 
-            <%= event.description %>
-          </li>
-          <li class = "date-time"> 
-            <%= link_to "編集", edit_event_path(event.id) %>
-          </li>
-        </ul>
+  <%= link_to "イベントを新規登録する", new_event_path, class:"btn btn--orange btn--border-solid index-new-link" %>
+  <div id="index-box">
+    <% if @events %>
+      <% @events.each do |event| %>
+        <%= link_to event_path(event.id) do%>
+          <ul class="index-event">
+            <div class="index-event-name-box">
+              <li class = "index-event-name-label">
+                <p>イベント名：</p>
+              </li>
+              <li class = "index-event-name">
+                <%= event.name %>
+              </li>
+            </div>
+            <div class="index-event-description-box">
+              <li class="index-event-description-label">
+                <p>詳細：</p>
+              </li>
+              <li class = "index-event-description"> 
+                <%= event.description %>
+              </li>
+              <li class = "event-edit-link"> 
+                <%= link_to "編集", edit_event_path(event.id) %>
+              </li>
+            </div>
+          </ul>
+        <% end %>
       <% end %>
-      </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

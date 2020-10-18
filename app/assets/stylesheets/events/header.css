@@ -4,20 +4,23 @@
   align-items: center;
   width: 100vw;
   height: 10vh;
-  background-color: rgb(14, 10, 248);
+  background-color: rgb(129, 235, 245);
 }
 .title{
   margin-right: auto;
   margin-left: 20px;
 }
 #title-main{
-  font-size: 25px;
+  font-size: 40px;
   font-weight: bold;
-  color: whitesmoke;
+  color: rgb(247, 70, 232);
+  cursor: pointer;
 }
 .header-link{
   text-decoration: none;
-  color: whitesmoke;
+  color: rgb(247, 70, 208);
+  cursor: pointer;
+  font-size: 15px;
 }
 
 .skew {
@@ -28,7 +31,9 @@
 
 .grid-6{
   margin-right: 10px;
-  color: white;
+  color: rgb(247, 70, 208);
   margin-right: 20px;
-
+  font-size: 15px;
+  display: flex;
+  
 }
