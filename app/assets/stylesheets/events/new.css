@@ -1,6 +1,193 @@
 /* // Place all the styles related to the create_dates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/ */
+#main-box{
+  margin: 0 5%;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background-color: rgb(244, 238, 245);
+}
+#event-title{
+  margin-top: 10px;
+  font-size: 24px;
+  color: black;
+  height: 25px;
+}
+
+#event-new-box{
+  margin-top: 10px;
+  margin-left: 18px;
+}
+
+#event-name-input{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  height: 29px;
+  width: 50%;
+}
+
+#event-description-input{
+  margin-top: 5px;
+  margin-bottom: 20px;
+  height:50px;
+  width: 50%;
+}
+
+#schedule{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+}
+
+#schedule-title{
+  font-size: 20px;
+}
+.sub-information{
+  font-size: 16px;
+}
+
+#select-days{
+  width: 50%;
+}
+
+#add-date-style{
+  width: 90%;
+  height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.savedate-input{
+  font-size: 16px;
+  width: 170px;
+}
+
+.date-time{
+  margin-left: 10px;
+}
+
+.date-time-input{
+  font-size: 16px;
+  height: 29px;
+  width: 80px;
+}
+#schedule-delete{
+  margin-left: 10px;
+  color: red;
+  cursor: pointer;
+  font-size: 16px;
+  width: 35px;
+  text-align: center;
+}
+
+#store{
+  margin-top: 5px;
+}
+
+.btn-flat-border {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border:hover {
+  background: #67c5ff;
+  color: white;
+}
+.btn-flat-border-red {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #ff676f;
+  border: solid 2px #ff676f;
+  border-radius: 3px;
+  transition: .4s;
+  width: 65px;
+}
+
+.btn-flat-border-red:hover {
+  background: #ff676f;
+  color: white;
+}
+.store-title-box{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#shop-add-btn{
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 280px;
+  margin-top: 10px;
+}
+#store-title{
+  font-size: 20px;
+}
+
+.shop-name-input{
+  margin-bottom: 10px;
+  height: 29px;
+  font-size: 16px;
+  width: 450px;
+}
+.shop-url-input{
+  margin-bottom: 10px;
+  height: 29px;
+  font-size: 16px;
+  width: 450px;
+}
+
+.shop-map-input{
+  margin-bottom: 10px;
+  height: 29px;
+  font-size: 16px;
+  width: 450px;
+}
+
+.shop-comment-input{
+  margin-bottom: 10px;
+  height: 29px;
+  font-size: 16px;
+  width: 450px;
+}
+
+#shop-delete-box{
+  margin-bottom: 10px;
+  margin-left: 360px;
+  width: 120px;
+}
+#submit-box{
+  display: flex;
+  justify-content: center;
+}
+#new-shop-top{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+}
+#new-shop{
+  width: 45%;
+}
+#new-submit{
+  height: 30px;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: blue;
+  color: white;
+  width: 400px;
+  height: 60px;
+  cursor: pointer;
+}
 
 body {
   font-family: 'Courier New', monospace;
@@ -14,7 +201,7 @@ table {
 
 thead,
 tfoot {
-  background: #eee;
+  background: rgb(247, 209, 240);
 
 }
 
@@ -27,6 +214,7 @@ td {
   padding: 8px;
   text-align: center;
   cursor: pointer;
+  background-color: rgb(250, 244, 245);
 }
 
 tbody td:first-child {
@@ -49,21 +237,16 @@ td.today {
   font-weight: bold;
 }
 
-
+tbody{
+  background-color: rgb(250, 244, 245);
+}
 
 #prev,
 #next,
 #today {
   cursor: pointer;
   user-select: none;
-}
-
-#add-date-style{
-  width: 300px;
-  height: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: rgb(247, 209, 240);
 }
 
 ul {
@@ -72,22 +255,6 @@ ul {
   padding: 0px;
 }
 
-.date-time{
-  width: 80px;
-}
-
-.date-input{
-  width: 150px;
-  font-size: 12px;
-}
-
-#shop-add-btn{
-  color: red;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 #shop-delete{
-  color: blue;
   cursor: pointer;
 }

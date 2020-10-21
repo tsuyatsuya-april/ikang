@@ -4,7 +4,7 @@
   <div id="index-box">
     <% if @events %>
       <% @events.each do |event| %>
-        <%= link_to event_path(event.id) do%>
+        <%= link_to event_path(event.id), id:"index-new-path" do%>
           <ul class="index-event">
             <div class="index-event-name-box">
               <li class = "index-event-name-label">
@@ -16,11 +16,13 @@
             </div>
             <div class="index-event-description-box">
               <li class="index-event-description-label">
-                <p>詳細：</p>
+                <p>詳細</p>
               </li>
               <li class = "index-event-description"> 
                 <%= event.description %>
               </li>
+            </div>
+            <div class="event-edit-link-box">
               <li class = "event-edit-link"> 
                 <%= link_to "編集", edit_event_path(event.id) %>
               </li>
