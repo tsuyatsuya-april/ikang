@@ -1,46 +1,46 @@
 /* // Place all the styles related to the create_dates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/ */
-#main-box{
+.main-box{
   margin: 0 5%;
   display: flex;
   flex-direction: column;
   width: 90%;
   background-color: rgb(244, 238, 245);
 }
-#event-title{
+.event-title{
   margin-top: 10px;
   font-size: 24px;
   color: black;
   height: 25px;
 }
 
-#event-new-box{
+.event-new-box{
   margin-top: 10px;
   margin-left: 18px;
 }
 
-#event-name-input{
+.event-name-input{
   margin-top: 5px;
   margin-bottom: 10px;
   height: 29px;
   width: 50%;
 }
 
-#event-description-input{
+.event-description-input{
   margin-top: 5px;
   margin-bottom: 20px;
   height:50px;
   width: 50%;
 }
 
-#schedule{
+.schedule{
   margin-top: 5px;
   display: flex;
   flex-direction: row;
 }
 
-#schedule-title{
+.schedule-title{
   font-size: 20px;
 }
 .sub-information{
@@ -57,6 +57,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 3px;
 }
 
 .savedate-input{
@@ -82,7 +83,7 @@
   text-align: center;
 }
 
-#store{
+.store{
   margin-top: 5px;
 }
 
@@ -125,10 +126,10 @@
   color: red;
   font-weight: bold;
   cursor: pointer;
-  margin-left: 280px;
+  margin-left: 180px;
   margin-top: 10px;
 }
-#store-title{
+.store-title{
   font-size: 20px;
 }
 
@@ -136,35 +137,35 @@
   margin-bottom: 10px;
   height: 29px;
   font-size: 16px;
-  width: 450px;
+  width: 350px;
 }
 .shop-url-input{
   margin-bottom: 10px;
   height: 29px;
   font-size: 16px;
-  width: 450px;
+  width: 350px;
 }
 
 .shop-map-input{
   margin-bottom: 10px;
   height: 29px;
   font-size: 16px;
-  width: 450px;
+  width: 350px;
 }
 
 .shop-comment-input{
   margin-bottom: 10px;
   height: 29px;
   font-size: 16px;
-  width: 450px;
+  width: 350px;
 }
 
 #shop-delete-box{
   margin-bottom: 10px;
-  margin-left: 360px;
-  width: 120px;
+  margin-left: 260px;
+  width: 170px;
 }
-#submit-box{
+.submit-box{
   display: flex;
   justify-content: center;
 }

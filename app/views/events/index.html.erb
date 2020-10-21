@@ -1,6 +1,6 @@
 <%= render "header" %>
 <div class="main">
-  <%= link_to "イベントを新規登録する", new_event_path, class:"btn btn--orange btn--border-solid index-new-link" %>
+  <%= link_to "イベントを新規登録", new_event_path, class:"btn btn--orange btn--border-solid index-new-link" %>
   <div id="index-box">
     <% if @events %>
       <% @events.each do |event| %>

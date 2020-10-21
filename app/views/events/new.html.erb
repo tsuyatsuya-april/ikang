@@ -1,23 +1,23 @@
 <%= render "header" %>
-<div id="main-box">
-  <h3 id="event-title">イベント登録</h3>
-  <div id="event-new-box">
+<div class="main-box">
+  <h3 class="event-title">イベント登録</h3>
+  <div class="event-new-box">
     <%= form_for @event, local: true do |f| %>
       <%= render "share/error_messages", model: f.object %>
-      <div id="event">
-        <div id="event-name">
+      <div class="event">
+        <div class="event-name">
           <p>イベント名(必須）</p>
-          <%= f.text_field :name, id:"event-name-input"%>
+          <%= f.text_field :name, class:"event-name-input"%>
         </div>
-        <div id="event-description">
+        <div class="event-description">
           <p>詳細（任意)</p>
-          <%= f.text_area :description, id:"event-description-input" %>
+          <%= f.text_area :description, class:"event-description-input" %>
         </div>
       </div>
-      <div id="schedule-title">
+      <div class="schedule-title">
         <h3>日程登録<span class="sub-information">(候補となる日付をカレンダーからクリックしてください)</span></h3>
       </div>
-      <div id="schedule">
+      <div class="schedule">
         <div id="select-days">
           <%= f.fields_for :schedules do |schedule_fields| %>
             <ul id="add-date-style">
@@ -87,9 +87,9 @@
           </table>
         </div>
       </div>
-      <div id="store">
+      <div class="store">
         <div class="store-title-box">
-          <div id="store-title">
+          <div class="store-title">
             <h2>お店登録</h2>
           </div>
           <div id="shop-add-btn">
@@ -122,7 +122,7 @@
           </div>
         <% end %>
       </div>
-      <div id="submit-box">
+      <div class="submit-box">
         <%= f.submit "イベントの登録",class:"btn-flat-border-submit", id:"new-submit" %>
       </div>
     <% end %>

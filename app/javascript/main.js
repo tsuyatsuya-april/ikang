@@ -155,6 +155,7 @@ if(path === "/events/new" || path === "/events"
       }
       
       function direction(Cell){
+        let judgePlus = document.getElementsByClassName("savedate-input");
         let nowClass = Cell.className;
         let rowINX = Cell.parentNode.rowIndex;
         let cellVal = Cell.innerHTML;
@@ -164,7 +165,11 @@ if(path === "/events/new" || path === "/events"
         let date_string = `${year}-${month}-${cellVal.padStart(2, "0")}`;
         if (nowClass != "disabled"){
           if (rowINX > 1 ){
+            if ( judgePlus[0].value != ""){
             createHTML(date_string);
+            } else {
+              judgePlus[0].value = date_string;
+            }
           }
         }
       }
@@ -183,12 +188,11 @@ if(path === "/events/new" || path === "/events"
 
         //input要素の生成
         const inputHTML = document.createElement("input");
-        inputHTML.setAttribute("id", `date_input_${ulElementNum}`);
+        inputHTML.setAttribute("id", `event_schedules_attributes_${ulElementNum}_savedate`);
+        inputHTML.setAttribute("class", `savedate-input`);
         inputHTML.setAttribute("name", `event[schedules_attributes][${ulElementNum}][savedate]`);
         inputHTML.setAttribute("value", date_string);
         inputHTML.setAttribute("type", "date");
-        inputHTML.setAttribute("style", "width:150px;");
-        inputHTML.setAttribute("style", "font-size:12px;");
 
         //selectの親となるli要素の生成
         const selectParentLi = document.createElement("li");
@@ -198,17 +202,18 @@ if(path === "/events/new" || path === "/events"
         const selectHTML = document.createElement("select");
         selectHTML.setAttribute("name", `event[schedules_attributes][${ulElementNum}][savetime]`);
         selectHTML.setAttribute("id", `event_schedules_attributes_${ulElementNum}_savetime`);
-        selectHTML.setAttribute("style", `width:80px;`);
+        selectHTML.setAttribute("class", `date-time-input`);
         
         
         //削除の親となるli要素の生成
         const deleteParentLi = document.createElement("li");
-        deleteParentLi.setAttribute("id", "delete");
+        deleteParentLi.setAttribute("id", "schedule-delete");
 
         // 削除機能をつけるa要素の生成
         const deleteHTML = document.createElement("p");
-        deleteHTML.setAttribute("style", `color:blue;`);
-        deleteHTML.innerText = "削除";
+        deleteHTML.setAttribute("class", `btn-flat-border-red`);
+        deleteHTML.setAttribute("class", `btn-flat-border-red`);
+        deleteHTML.innerText = "日程削除";
         // 要素を追加
         ParentNode.appendChild(SecondParentUl);
         SecondParentUl.appendChild(inputParentLi);
@@ -251,9 +256,9 @@ if(path === "/events/new" || path === "/events"
         shopDelete();
       }
       
-      // 削除ボタンの実装
+      // 日程削除ボタンの実装
       function removeHTML(){
-        let targetList = document.querySelectorAll("#delete");
+        let targetList = document.querySelectorAll("#schedule-delete");
         let targetUl = document.querySelectorAll("#add-date-style");
         let targetNum = targetList.length;
         for (let i=0; i < targetNum; i++){
@@ -265,19 +270,6 @@ if(path === "/events/new" || path === "/events"
           }
         };
       };
-  
-      // formSubmitJudge();
-    // フォームがゼロの時提出できないようにする為の処理
-      // function formSubmitJudge() {
-      //   document.getElementById("create-data-submit").addEventListener("click", checkFormNumber);
-
-      //   function checkFormNumber(event) {
-      //     if(document.querySelectorAll("#add-date-style").length === 0) {
-      //       event.preventDefault();
-      //       alert("カレンダーの日付を選択した後、時間の設定をしてください");
-      //     }
-      //   }
-      // }
       
       function newShopAdd(){
         const shopParent = document.getElementById("new-shop-top");
@@ -286,17 +278,25 @@ if(path === "/events/new" || path === "/events"
         let nextNum = currentShopLength;
         let shopHtml = `
           <div id="new-shop">
-            <div><p>店名</p></div>
-            <div class="field_with_errors">
-              <input type="text" value="" name="event[shops_attributes][${nextNum}][shop_name]" id="event_shops_attributes_${nextNum}_shop_name">
+            <div id="shop-name-box">
+              <div id="shop-name"><p>店名(必須)</p></div>
+              <input class="shop-name-input" type="text" name="event[shops_attributes][${nextNum}][shop_name]" id="event_shops_attributes_${nextNum}_shop_name">
             </div>
-            <div><p>店のURL</p></div>
-            <input type="text" value="" name="event[shops_attributes][${nextNum}][shop_url]" id="event_shops_attributes_${nextNum}_shop_url">
-            <div><p>地図のURL</p></div>
-            <input type="text" value="" name="event[shops_attributes][${nextNum}][map_url]" id="event_shops_attributes_${nextNum}_map_url">
-            <div><p>コメント</p></div>
-            <input type="text" value="" name="event[shops_attributes][${nextNum}][comment]" id="event_shops_attributes_${nextNum}_comment">
-            <p id="shop-delete">お店削除</p>
+            <div id="shop-url-box">
+              <div id="shop-url"><p>店のURL(任意)</p></div>
+              <input class="shop-url-input" type="text" name="event[shops_attributes][${nextNum}][shop_url]" id="event_shops_attributes_${nextNum}_shop_url">
+            </div>
+            <div id="shop-map-box">
+              <div id="shop-map"><p>地図のURL(任意)</p></div>
+              <input class="shop-map-input" type="text" name="event[shops_attributes][${nextNum}][map_url]" id="event_shops_attributes_${nextNum}_map_url">
+            </div>
+            <div id="shop-comment-box">
+              <div id="shop-comment"><p>コメント(任意)</p></div>
+              <input class="shop-comment-input" type="text" name="event[shops_attributes][${nextNum}][comment]" id="event_shops_attributes_${nextNum}_comment">
+            </div>
+            <div id="shop-delete-box">
+              <a class="btn-flat-border-red" id="shop-delete" href="#">お店削除</a>
+            </div>
           </div>`;
         addShopBtn.onclick = function(){
           shopParent.insertAdjacentHTML("beforeend", shopHtml);
