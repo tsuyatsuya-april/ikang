@@ -18,6 +18,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       modalCloseJoin();
     } else {
       modalAddJoin();
+      modalAddShop();
     }
     
     
@@ -207,6 +208,23 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       mask.classList.add("hidden");
     };
   }
+  //モーダルウィンドウでお店情報を追加できる回答フォームを出力する
+  function modalAddShop(){
+    const open = document.getElementById("shop-open");
+    const close = document.getElementById("shop-close");
+    const modal = document.getElementById("shop-modal");
+    const mask = document.getElementById("shop-mask");
+
+    open.onclick = function(){
+      modal.classList.remove("hidden");
+      mask.classList.remove("hidden");
+    };
+
+    close.onclick = function(){
+      modal.classList.add("hidden");
+      mask.classList.add("hidden");
+    };
+  }
 
   // 編集フォームに一覧表の日付：時間、お店：urlの項目を追加する
   function transEditLabel(){
@@ -360,7 +378,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       let cross=0;
       for(let j=0;j<dateTbl.rows[i].cells.length;j++){ 
         let Cells = dateTbl.rows[i].cells[j].innerText;
-        if (i>0 && j > 3){
+        if (i>0 && j > 4){
           if (Cells == "◯"){
             circle++;
           } else if(Cells == "△"){
@@ -371,9 +389,9 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
         }
       }
       if (i>0){
-        dateTbl.rows[i].cells[1].innerHTML = circle;
-        dateTbl.rows[i].cells[2].innerHTML = delta;
-        dateTbl.rows[i].cells[3].innerHTML = cross;
+        dateTbl.rows[i].cells[2].innerHTML = circle;
+        dateTbl.rows[i].cells[3].innerHTML = delta;
+        dateTbl.rows[i].cells[4].innerHTML = cross;
       }
     }
   }
@@ -386,7 +404,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       let cross=0;
       for(let j=0;j<shopTbl.rows[i].cells.length;j++){ 
         let Cells = shopTbl.rows[i].cells[j].innerText;
-        if (i>0 && j > 3){
+        if (i>0 && j > 4){
           if (Cells == "◯"){
             circle++;
           } else if(Cells == "△"){
@@ -397,9 +415,9 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
         }
       }
       if (i>0){
-        shopTbl.rows[i].cells[1].innerHTML = circle;
-        shopTbl.rows[i].cells[2].innerHTML = delta;
-        shopTbl.rows[i].cells[3].innerHTML = cross;
+        shopTbl.rows[i].cells[2].innerHTML = circle;
+        shopTbl.rows[i].cells[3].innerHTML = delta;
+        shopTbl.rows[i].cells[4].innerHTML = cross;
       }
     }
   }
@@ -409,12 +427,12 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     let row = dateTbl.rows.length;
     let mc = 0;
     for(i=1;i<row;i++){
-      if(dateTbl.rows[i].cells[1].innerHTML > mc){
-        mc = dateTbl.rows[i].cells[1].innerHTML;
+      if(dateTbl.rows[i].cells[2].innerHTML > mc){
+        mc = dateTbl.rows[i].cells[2].innerHTML;
       }
     }
     for(j=0;j<row;j++){
-      if(dateTbl.rows[j].cells[1].innerHTML == mc && mc > 0){
+      if(dateTbl.rows[j].cells[2].innerHTML == mc && mc > 0){
         dateTbl.rows[j].style.backgroundColor = "pink";
       }
     }
@@ -426,16 +444,17 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     let row = shopTbl.rows.length;
     let mc = 0;
     for(i=1;i<row;i++){
-      if(shopTbl.rows[i].cells[1].innerHTML > mc){
-        mc = shopTbl.rows[i].cells[1].innerHTML;
+      if(shopTbl.rows[i].cells[2].innerHTML > mc){
+        mc = shopTbl.rows[i].cells[2].innerHTML;
       }
     }
     for(j=0;j<row;j++){
-      if(shopTbl.rows[j].cells[1].innerHTML == mc && mc > 0){
+      if(shopTbl.rows[j].cells[2].innerHTML == mc && mc > 0){
         shopTbl.rows[j].style.backgroundColor = "pink";
       }
     }
   }
+
 
   function check_name() {
       const userName = document.getElementById("join-user");
