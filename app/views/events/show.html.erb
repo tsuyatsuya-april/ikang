@@ -1,13 +1,22 @@
 <%= render "header" %>
 <div class="main-show-box">
-  <h3 class="event-title">イベント参加登録</h1>
+  <h3 class="event-title"><%= @event.name %></h1>
   <div class="middle-show-box">
     <div class="show-event-box">
-      <div>
-        <span class="show-event-name">イベント名:<%= @event.name %></span>
+      <div class="show-event-name-box">
+        <span class="show-event-name"></span>
       </div>
-      <div>
-        <span class="show-event-description">詳細: <%= @event.description %></span>
+      <div class="show-event-description-box">
+        <div class="show-event-description">詳細 </div>
+        <div class="show-event-description-detail"><%= @event.description %></div>
+      </div>
+    </div>
+    <div class="event-show-btns">
+      <div id="open">
+        <h1>イベント参加</h1>
+      </div>
+      <div class="event-show-add-shop" id="shop-open">
+        <h1>お店の追加</h1>
       </div>
     </div>
     <table id="date-table">
@@ -16,6 +25,9 @@
           <th class="event-data-head">
             <h4 class="head-title">日程候補</h4>
           </th>
+          <td class="index-status-form total-name">
+            総計
+          </td>
           <td class="index-status-form mark">
             ◯
           </td>
@@ -40,7 +52,7 @@
             <div>
               <% showdate = et.savedate.to_s %>
               <span id="pass-savedate">
-                <%= showdate[0,4] %>年<%= showdate[5,2] %>月<%= showdate[8,2] %>日
+                <%= showdate[5,2] %>月<%= showdate[8,2] %>日
               </span>
               <br>
               <% showtime = et.savetime.to_s%>
@@ -49,6 +61,9 @@
               </span>
             </div>
           </th>
+          <td class="total">
+            <%= @event.joins.length %>
+          </td>
           <td class="sum-maru">
             
           </td>
@@ -89,6 +104,9 @@
           <th class="event-data-head">
             <h4 class="head-title">お店候補</h4>
           </th>
+          <td class="index-status-form total-name">
+            総計
+          </td>
           <td class="index-status-form mark">
             ◯
           </td>
@@ -123,6 +141,9 @@
               <span id="pass-comment">コメント/<%= es.comment %></span> 
             </div>
           </th>
+          <td class="total">
+            <%= @event.joins.length %>
+          </td>
           <td class="sum-maru">
           </td>
           <td class="sum-delta">
@@ -153,9 +174,6 @@
       <% end %>
     </table>
     <% unless params[:join_id] %>
-      <div id="open">
-        <h1>回答する</h1>
-      </div>
       <%# 新規参加者の登録を行う %>
       <div id="mask" class="hidden">
         <section id="modal" class="hidden">
@@ -189,12 +207,11 @@
                           <th id="join-schedules">
                             <% answerdate = et.savedate.to_s %>
                             <span id="pass-savedate">
-                              <%= answerdate[0,4] %>年<%= answerdate[5,2] %>月<%= answerdate[8,2] %>日
+                              <%= answerdate[5,2] %>月<%= answerdate[8,2] %>日
                             </span>
-                            <br>
                             <% answertime = et.savetime.to_s%>
                             <span id="pass-savetime">
-                              <%= answertime[0,2] %>時<%= answertime[3,2] %>分
+                              <%= answertime[0,2] %>:<%= answertime[3,2] %>~
                             </span>
                           </th>
                           <td class="schedule-vote-box">
@@ -356,5 +373,35 @@
         </section>
       </div>
     <% end %>
+    <div id="shop-mask" class="hidden">
+      <section id="shop-modal" class="hidden">
+        <div id="shop-close">
+          閉じる
+        </div>
+        <%= form_with model: @shop, url:event_shops_path(@event.id, show_event:"event"), id: "show-shop-form", local: true do |shop| %>
+          <div id="show-shop-top">
+            <div id="show-shop">
+              <div>
+                <div>店名(必須)</div>
+                <%= shop.text_field :shop_name, id:"show-shop-name" %>
+              </div>
+              <div>
+                <div>店のURL(任意)</div>
+                <%= shop.text_field :shop_url, id:"show-shop-url" %>
+              </div>
+              <div>
+                <div>地図のURL(任意）</div>
+                <%= shop.text_field :map_url, id:"show-map_url" %>
+              </div>
+              <div>
+                <div>コメント(任意）</div>
+                <%= shop.text_field :comment, id:"show-shop-comment" %>
+              </div>
+            </div>
+          </div>
+          <%= shop.submit "お店情報登録",class:"btn-flat-border", id:"join-edit-submit-inputbox" %>
+        <% end %>
+      </section>
+     </div>
   </div>
 </div>

@@ -27,6 +27,7 @@ class EventsController < ApplicationController
 
   def show
     @joins = Join.all
+    @shop = Shop.new
     if params[:join_id]
       set_join
       @shops = Shop.all

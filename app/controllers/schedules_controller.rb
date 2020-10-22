@@ -6,10 +6,7 @@ class SchedulesController < ApplicationController
     if @schedule.save
       @event.joins.map do |join|
         @date_answer = DateAnswer.new(schedule_id: @schedule.id, join_id: join.id, status: '3')
-        if @date_answer.save
-        else
-          redirect_to root_path
-        end
+        @date_answer.save
       end
       redirect_to edit_event_path(params[:event_id])
     else
@@ -21,7 +18,7 @@ class SchedulesController < ApplicationController
   def destroy
     @event = Event.find(params[:event_id])
     @schedule = Schedule.find(params[:id])
-    if @schedule.destroy && @event.schedules.length > 1
+    if @schedule.destroy
       redirect_to edit_event_path(params[:event_id])
     else
       render "events/edit"
