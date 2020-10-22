@@ -301,6 +301,7 @@ if(path === "/events/new" || path === "/events"
         addShopBtn.onclick = function(){
           shopParent.insertAdjacentHTML("beforeend", shopHtml);
           shopDelete();
+          newShopAdd();
         };
         
       }

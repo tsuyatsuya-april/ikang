@@ -1,3 +1,22 @@
+
+.main-show-box{
+  margin: 0 5%;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.show-event-box{
+  margin-top: 20px;
+}
+
+.middle-show-box{
+  margin: 0 15px;
+}
+
+.show-event-name{
+  font-size: 18px;
+}
 h1.btn--orange {
   background: #ffffff;
   color: #eb6100;
@@ -50,6 +69,7 @@ h1{
   text-align: center;
   padding: 12px 0;
   margin: 16px auto 0;
+  text-decoration: none;
 }
 
 #mask, #edit-mask {
@@ -137,7 +157,7 @@ h1{
   font-size: 24px;
 }
 
-#join-schedules{
+#join-schedules, #join-edit-schedules{
   width: 250px;
   text-align: left;
   background-color: rgb(250, 219, 250);
@@ -149,7 +169,7 @@ h1{
   font-size: 40px;
 }
 
-#join-form{
+#join-form #join-edit-form{
   margin: 10px 15%;
 }
 
@@ -157,27 +177,27 @@ h1{
   display: none;
 }
 
-#join-box{
+#join-box, #join-edit-box{
   margin-top: 20px;
 }
 
-#join-name-label{
+#join-name-label, #join-edit-name-label{
   font-size: 18px;
 }
 
-#join-user{
+#join-user, #join-edit-user{
   height: 29px;
   width: 300px;
   font-size: 18px;
   margin-bottom: 25px;
 }
 
-#date-answer-title{
+#date-answer-title, #date-edit-answer-title{
   text-align: left;
   font-size: 18px;
 }
 
-#date-answer-table{
+#date-answer-table, #date-edit-answer-table{
   border: 2px solid #eef0f1;
   
 }
@@ -186,11 +206,11 @@ h1{
   border-bottom: 2px solid white;
 }
 
-#shop-answer{
+#shop-answer, #shop-edit-answer{
   margin-top: 20px;
 }
 
-#shop-answer-title{
+#shop-answer-title, #shop-edit-answer-title{
   text-align: left;
   font-size: 18px;
 }
@@ -209,7 +229,7 @@ h1{
   background-color: rgb(250, 219, 250);
 }
 
-#shop-yes, #shop-delta{
+#shop-yes, #shop-delta, #shop-edit-yes, #shop-edit-delta{
   margin-right: 10px;
   font-size: 24px;
 }
@@ -217,7 +237,7 @@ h1{
   font-size: 12px;
 }
 
-#join-submit-box{
+#join-submit-box, #join-edit-submit-box{
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -225,10 +245,44 @@ h1{
   height: 100%;
   cursor: pointer;
 }
-#join-submit-inputbox{
+#join-submit-inputbox, #join-edit-submit-inputbox{
   cursor: pointer;
   font-size: 18px;
   width: 250px;
   height: 40px;
   
 }
+
+.non-bottom-line{
+  text-decoration: none;
+  color: blue;
+}
+.center{
+  margin: 0 15%;
+}
+
+.btn-flat-border-red-user{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #ff676f;
+  border: solid 2px #ff676f;
+  border-radius: 3px;
+  transition: .4s;
+  width: 100px;
+  text-align: center;
+  height: 20px;
+  padding-top: 7px;
+  margin-top: 18px;
+}
+
+.btn-flat-border-red-user:hover {
+  background: #ff676f;
+  color: white;
+}
+
+.join-edit-top{
+  display: flex;
+  justify-content: space-between;
+}
+

@@ -15,6 +15,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       transEditLabel();
       shopEditStatusValue();
       DateEditStatusValue();
+      modalCloseJoin();
     } else {
       modalAddJoin();
     }
@@ -189,6 +190,17 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       modal.classList.remove("hidden");
       mask.classList.remove("hidden");
     };
+
+    close.onclick = function(){
+      modal.classList.add("hidden");
+      mask.classList.add("hidden");
+    };
+  }
+  //モーダルウィンドウで参加者情報を編集できる回答フォームの閉じるボタンを押せば、閉じるようにする。
+  function modalCloseJoin(){
+    const close = document.getElementById("edit-close");
+    const modal = document.getElementById("edit-modal");
+    const mask = document.getElementById("edit-mask");
 
     close.onclick = function(){
       modal.classList.add("hidden");
