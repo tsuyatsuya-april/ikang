@@ -6,14 +6,15 @@ class ShopsController < ApplicationController
     if @shop.save
       @event.joins.map do |join|
         @shop_answer = ShopAnswer.new(shop_id: @shop.id, join_id: join.id, status: "3", vote: "0")
-        if @shop_answer.save
-        else
-          redirect_to root_path
-        end
-      end
-      redirect_to edit_event_path(params[:event_id])
+        @shop_answer.save
+      end 
     else
       redirect_to root_path
+    end
+    if params[:show_event]
+      redirect_to event_path(params[:event_id])
+    else
+      redirect_to edit_event_path(params[:event_id])
     end
   end
 

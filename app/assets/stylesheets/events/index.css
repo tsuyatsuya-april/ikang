@@ -1,0 +1,80 @@
+.main{
+  background-color: rgb(248, 233, 250);
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a.btn--orange.btn--border-solid {
+  border: 2px solid #5eb4ee;
+}
+
+.index-new-link{
+  color: #f7f3f3;
+  text-decoration: none;
+  height: 70px;
+  font-size: 30px;
+  width: 40%;
+  background-color: rgb(11, 86, 247);
+  margin-top: 10px;
+  text-align: center;
+  padding-top: 40px;
+  letter-spacing: 0.3em
+}
+
+#index-box{
+  margin-top: 15px;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 100%;
+}
+
+#index-new-path{
+  text-decoration: none;
+}
+.index-event{
+  margin: 10px 10px;
+  width: 30%;
+  background-color: rgb(145, 213, 243);
+  height: 150px;
+  border: 1px solid grey;
+}
+
+.index-event-name-box{
+  margin: 10px 5px 5px 5px;
+  font-size: 18px;
+  display: flex;
+}
+
+.index-event-name-label{
+  color: rgba(0, 0, 0, 0.74);
+}
+.index-event-name{
+  color: black;
+}
+
+.index-event-description-box {
+  margin: 5px;
+  height: 90px;
+}
+
+.index-event-description-label{
+  color: rgba(0, 0, 0, 0.74);
+}
+.index-event-description{
+  color: black;
+  border: 1px solid lightgray;
+  height: 75px;
+  background-color: rgb(250, 252, 253)
+
+}
+
+.event-edit-link-box{
+  margin: 5px 0px 5px 5px;
+  padding-right: 5px;
+  text-align: right;
+}

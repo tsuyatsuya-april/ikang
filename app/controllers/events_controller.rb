@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   def index
     if user_signed_in?
       user = User.find(current_user.id)
-      @events = user.events
+      @events = user.events.reverse
     end
   end
 
@@ -27,6 +27,7 @@ class EventsController < ApplicationController
 
   def show
     @joins = Join.all
+    @shop = Shop.new
     if params[:join_id]
       set_join
       @shops = Shop.all

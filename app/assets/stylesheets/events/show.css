@@ -1,3 +1,48 @@
+
+.main-show-box{
+  margin:  0 5% 5% 5%;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  background: rgb(255, 255, 255);
+}
+
+.show-event-box{
+  margin-top: 20px;
+}
+
+.middle-show-box{
+  margin: 0 15px;
+}
+
+.show-event-name{
+  font-size: 18px;
+}
+.show-event-description-box{
+  margin-top: 10px;
+  width: 600px;
+  height: 80px;
+  margin-block-end: 20px;
+}
+.show-event-description{
+  font-size: 18px;
+}
+
+.show-event-description-detail{
+  margin-top: 5px;
+  font-size: 16px;
+  width: 100%;
+  height: 60px;
+  border: 1px solid lightgray;
+}
+
+.event-show-btns{
+  display: flex;
+  gap: 100px;
+  margin-left: 50px;
+  
+}
+
 h1.btn--orange {
   background: #ffffff;
   color: #eb6100;
@@ -33,17 +78,40 @@ h1{
   text-align: center;
 }
 
-#open, #close, #edit-open, #edit-close {
+#open, #edit-open,.event-show-add-shop{
   cursor: pointer;
-  width: 200px;
+  width: 160px;
+  text-align: center;
+  margin: 1px 0 16px;
+  display: inline-block;
+  padding: 0.9em 1em;
+  text-decoration: none;
+  color: white;
+  border: solid 2px #fc8cf6;
+  border-radius: 3px;
+  transition: .4s;
+  text-align: center;
+  height: 30px;
+  font-size: 20px;
+  background: #f899f3;
+}
+
+#open:hover, .event-show-add-shop:hover{
+  background:#ff00f2;
+  color: white;
+}
+#close, #edit-close, #shop-close{
+  cursor: pointer;
+  width: 100px;
   border: 1px solid #ccc;
   border-radius: 4px;
   text-align: center;
   padding: 12px 0;
   margin: 16px auto 0;
+  text-decoration: none;
 }
 
-#mask, #edit-mask {
+#mask, #edit-mask, #shop-mask {
   background: rgba(0,0,0,0.4);
   position: fixed;
   top: 0;
@@ -53,7 +121,7 @@ h1{
   z-index: 1;
 }
 
-#modal, #edit-modal{
+#modal, #edit-modal, #shop-modal{
   background: #fff;
   width: 700px;
   padding: 20px;
@@ -63,17 +131,18 @@ h1{
   left:50%;/* bodyの左から50%分ずらす */
   transform:translate(-50%,-50%);/* 指定した位置から真ん中にずらす */
   overflow-y:scroll;
+  
 }
 
 #modal > p, #edit-modal > p{
   margin: 0 0 20px;
 }
 
-#mask.hidden, #edit-mask.hidden{
+#mask.hidden, #edit-mask.hidden, #shop-mask.hidden{
   display: none;
 }
 
-#modal.hidden, #edit-modal.hidden{
+#modal.hidden, #edit-modal.hidden, #shop-modal.hidden{
   transform: translate(0, -500px);
 }
 
@@ -89,4 +158,288 @@ h1{
 
 .cross{
   font-size: 45px;
+}
+
+.event-data-head{
+  width: 200px;
+}
+
+.mark{
+  width: 35px;
+}
+.head-title{
+  text-align: left;
+}
+.event-show-data{
+  background-color: lightskyblue;
+}
+.event-join-user-name{
+  width: 90px;
+  font-size: 14px;
+}
+.shop-lists{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: left;
+  font-size: 14px;
+}
+
+.change-status{
+  display: flex;
+  justify-content: space-between;
+}
+
+.schedule-vote-box{
+  width: 200px;
+  background-color: rgb(250, 219, 250);
+  font-size: 24px;
+}
+
+#join-schedules, #join-edit-schedules{
+  width: 250px;
+  text-align: left;
+  background-color: rgb(250, 219, 250);
+  border: rgb(231, 234, 236);
+  font-size: 18px;
+}
+
+.cross-vote{
+  font-size: 40px;
+}
+
+#join-form #join-edit-form{
+  margin: 10px 15%;
+}
+
+.hidden{
+  display: none;
+}
+
+#join-box, #join-edit-box{
+  margin-top: 20px;
+}
+
+#join-name-label, #join-edit-name-label{
+  font-size: 18px;
+}
+
+#join-user, #join-edit-user{
+  height: 29px;
+  width: 300px;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+#date-answer-title, #date-edit-answer-title{
+  text-align: left;
+  font-size: 18px;
+}
+
+#date-answer-table, #date-edit-answer-table{
+  border: 2px solid #eef0f1;
+  
+}
+
+.bottom-line{
+  border-bottom: 2px solid white;
+}
+
+#shop-answer, #shop-edit-answer{
+  margin-top: 20px;
+}
+
+#shop-answer-title, #shop-edit-answer-title{
+  text-align: left;
+  font-size: 18px;
+}
+
+.shop-label{
+  width: 200px;
+  text-align: left;
+  background-color: rgb(250, 219, 250);
+  border: rgb(231, 234, 236);
+  font-size: 16px;
+}
+.shop-vote-balance{
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+  background-color: rgb(250, 219, 250);
+}
+
+#shop-yes, #shop-delta, #shop-edit-yes, #shop-edit-delta{
+  margin-right: 10px;
+  font-size: 24px;
+}
+.show-url{
+  font-size: 12px;
+}
+
+#join-submit-box, #join-edit-submit-box{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+}
+#join-submit-inputbox, #join-edit-submit-inputbox{
+  cursor: pointer;
+  font-size: 18px;
+  width: 250px;
+  height: 40px;
+  
+}
+
+.non-bottom-line{
+  text-decoration: none;
+  color: blue;
+}
+.center{
+  margin: 0 15%;
+}
+
+.btn-flat-border-red-user{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #ff676f;
+  border: solid 2px #ff676f;
+  border-radius: 3px;
+  transition: .4s;
+  width: 100px;
+  text-align: center;
+  height: 20px;
+  padding-top: 7px;
+  margin-top: 18px;
+}
+
+.btn-flat-border-red-user:hover {
+  background: #ff676f;
+  color: white;
+}
+
+.join-edit-top{
+  display: flex;
+  justify-content: space-between;
+}
+
+.total-name{
+  font-size: 18px;
+  color: black;
+}
+
+.field{
+  justify-content: center;
+}
+
+.sign-up,.log-in{
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contents,.contents-in{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.field-form{
+  width: 500px;
+  height: 30px;
+  margin: 5px 0 15px 0;
+  font-size: 18px;
+}
+
+.container{
+  width: 600px;
+  height: 500px;
+  background-color: rgb(248, 218, 222);
+  padding-left: 60px;
+  padding-top: 30px;
+  border: 1px solid lightgrey;
+  /* display: flex;
+  justify-content: center;
+  padding: 40px 0 10px 30px; */
+}
+.actions{
+  display: flex;
+  justify-content: center;
+  padding-right: 80px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.btn-flat-border-sign-up{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: white;
+  border: solid 2px #67c2ff;
+  border-radius: 3px;
+  transition: .4s;
+  width: 300px;
+  text-align: center;
+  height: 50px;
+  padding-top: 7px;
+  margin-top: 18px;
+  background-color: #84cbfa;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-flat-border-sign-up:hover{
+  background: #0e9af8;
+  color: white;
+}
+
+.container-in{
+  width: 600px;
+  height: 300px;
+  background-color: rgb(248, 218, 222);
+  padding-left: 60px;
+  padding-top: 30px;
+  border: 1px solid lightgrey;
+}
+
+.contents-in{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+#show-shop-top{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+  border: 1px solid lightslategray;
+  background-color: rgb(250, 219, 246);
+}
+
+#show-shop{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.show-shop-label{
+  font-size:18px;
+  margin-bottom: 5px;
+}
+
+.show-shop-input{
+  width: 300px;
+  height: 24px;
+  margin-bottom: 10px;
+}
+
+.show-shop-end{
+  margin-bottom: 30px;
+}
+
+#join-edit-submit-inputbox{
+  margin-left: 25px;
 }

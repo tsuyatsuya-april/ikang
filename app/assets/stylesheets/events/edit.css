@@ -5,17 +5,8 @@
   user-select: none;
 }
 
-#edit-add-date-style{
-  width: 300px;
-  height: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-
-.edit-date-time{
-  width: 80px;
+#edit-select-days{
+  width: 50%;
 }
 
 .edit-date-input{
@@ -31,4 +22,80 @@
   color: red;
   font-weight: bold;
   cursor: pointer;
+  margin-left: 180px;
+  margin-top: 10px;
+}
+
+#edit-add-date-style{
+  width: 90%;
+  height: 30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 3px;
+}
+.edit-date-time{
+  margin-left: 30px;
+}
+
+#edit-delete{
+  margin-left: 5px;
+  color: red;
+  cursor: pointer;
+  font-size: 16px;
+  width: 35px;
+  text-align: center;
+}
+
+.savedate-input{
+  width: 100px;
+}
+
+#edit-shop-top{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+}
+#edit-shop{
+  width: 40%;
+}
+
+#edit-submit{
+  height: 30px;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: blue;
+  color: white;
+  width: 400px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.btn-flat-border-all {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #ff676f;
+  border: solid 2px #ff676f;
+  border-radius: 3px;
+  transition: .4s;
+  width: 150px;
+  text-align: center;
+}
+
+.btn-flat-border-all:hover {
+  background: #ff676f;
+  color: white;
+}
+
+.event-title-box{
+  display: flex;
+  justify-content: space-between;
+}
+
+#event-delete-box{
+  margin-top: 10px;
+  margin-right: 20px;
 }

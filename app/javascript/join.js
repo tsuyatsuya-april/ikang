@@ -7,6 +7,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     shopStatusValue();
     CountDateStatus();
     CountShopStatus();
+    noOneDirection();
     //Count系のメソッドでまるばつサンカクを集計した後にexpect系メソッドで集計後の◯の最高値に対して背景色をつける
     //なので、Count系メソッド→expect系メソッドの順番でなければならない
     expectDay();
@@ -15,8 +16,12 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       transEditLabel();
       shopEditStatusValue();
       DateEditStatusValue();
+      modalCloseJoin();
+      EditDirection();
+      noOneEditDirection();
     } else {
       modalAddJoin();
+      modalAddShop();
     }
     
     
@@ -195,6 +200,34 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       mask.classList.add("hidden");
     };
   }
+  //モーダルウィンドウで参加者情報を編集できる回答フォームの閉じるボタンを押せば、閉じるようにする。
+  function modalCloseJoin(){
+    const close = document.getElementById("edit-close");
+    const modal = document.getElementById("edit-modal");
+    const mask = document.getElementById("edit-mask");
+
+    close.onclick = function(){
+      modal.classList.add("hidden");
+      mask.classList.add("hidden");
+    };
+  }
+  //モーダルウィンドウでお店情報を追加できる回答フォームを出力する
+  function modalAddShop(){
+    const open = document.getElementById("shop-open");
+    const close = document.getElementById("shop-close");
+    const modal = document.getElementById("shop-modal");
+    const mask = document.getElementById("shop-mask");
+
+    open.onclick = function(){
+      modal.classList.remove("hidden");
+      mask.classList.remove("hidden");
+    };
+
+    close.onclick = function(){
+      modal.classList.add("hidden");
+      mask.classList.add("hidden");
+    };
+  }
 
   // 編集フォームに一覧表の日付：時間、お店：urlの項目を追加する
   function transEditLabel(){
@@ -339,6 +372,75 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       dc++;
     };
   }
+  // 一番投票機能の実装
+  function noOneDirection(){
+    let receiveVote = document.querySelectorAll("#shops-vote");
+    let passVote = document.querySelectorAll("#shop-vote");
+    let receiveVoteLength = receiveVote.length;
+  
+    for(let i=0; i < receiveVoteLength;i++){  
+      passVote[i].onclick = function(){
+        for(let j=0; j<receiveVoteLength; j++){
+          if(i != j){
+            if(passVote[j].classList.contains("choice") == true){
+              passVote[j].classList.remove("choice");
+            }
+            receiveVote[j].value = 0;
+          }
+        }
+        if(receiveVote[i].value == 1){
+          receiveVote[i].value = 0;
+          if(passVote[i].classList.contains("choice") == true){
+            passVote[i].classList.remove("choice");
+          }
+        }else{
+          receiveVote[i].value = 1;
+          if(passVote[i].classList.contains("choice") == false){
+            passVote[i].classList.add("choice");
+          }
+        }
+      }
+    }
+  }
+  function EditDirection(){
+    let editVote = document.querySelectorAll("#shops-edit-vote");
+    let editVoteShape = document.querySelectorAll("#shop-edit-vote");
+    let editVoteLength = editVote.length;
+    for(let i=0; i<editVoteLength; i++){
+      if(editVote[i].value == 1){
+        editVoteShape[i].classList.add("choice");
+      }
+    }
+  }
+  function noOneEditDirection(){
+    let receiveEditVote = document.querySelectorAll("#shops-edit-vote");
+    let passEditVote = document.querySelectorAll("#shop-edit-vote");
+    let receiveEditVoteLength = receiveEditVote.length;
+    for(let i=0; i < receiveEditVoteLength;i++){
+      passEditVote[i].onclick = function(){
+        for(let j=0; j<receiveEditVoteLength; j++){
+          if(i != j){
+            if(passEditVote[j].classList.contains("choice") == true){
+              passEditVote[j].classList.remove("choice");
+            }
+            receiveEditVote[j].value = 0;
+          }
+        }
+        if(receiveEditVote[i].value == 1){
+          receiveEditVote[i].value = 0;
+          if(passEditVote[i].classList.contains("choice") == true){
+            passEditVote[i].classList.remove("choice");
+          }
+        }else{
+          receiveEditVote[i].value = 1;
+          if(passEditVote[i].classList.contains("choice") == false){
+            passEditVote[i].classList.add("choice");
+          }
+        }
+      }
+    }
+  }
+
   // 日程の一覧表にマルバツサンカクの集計を反映させる
   function CountDateStatus(){
     let dateTbl = document.getElementById("date-table");
@@ -348,7 +450,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       let cross=0;
       for(let j=0;j<dateTbl.rows[i].cells.length;j++){ 
         let Cells = dateTbl.rows[i].cells[j].innerText;
-        if (i>0 && j > 3){
+        if (i>0 && j > 4){
           if (Cells == "◯"){
             circle++;
           } else if(Cells == "△"){
@@ -359,9 +461,9 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
         }
       }
       if (i>0){
-        dateTbl.rows[i].cells[1].innerHTML = circle;
-        dateTbl.rows[i].cells[2].innerHTML = delta;
-        dateTbl.rows[i].cells[3].innerHTML = cross;
+        dateTbl.rows[i].cells[2].innerHTML = circle;
+        dateTbl.rows[i].cells[3].innerHTML = delta;
+        dateTbl.rows[i].cells[4].innerHTML = cross;
       }
     }
   }
@@ -374,7 +476,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       let cross=0;
       for(let j=0;j<shopTbl.rows[i].cells.length;j++){ 
         let Cells = shopTbl.rows[i].cells[j].innerText;
-        if (i>0 && j > 3){
+        if (i>0 && j > 4){
           if (Cells == "◯"){
             circle++;
           } else if(Cells == "△"){
@@ -385,9 +487,9 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
         }
       }
       if (i>0){
-        shopTbl.rows[i].cells[1].innerHTML = circle;
-        shopTbl.rows[i].cells[2].innerHTML = delta;
-        shopTbl.rows[i].cells[3].innerHTML = cross;
+        shopTbl.rows[i].cells[2].innerHTML = circle;
+        shopTbl.rows[i].cells[3].innerHTML = delta;
+        shopTbl.rows[i].cells[4].innerHTML = cross;
       }
     }
   }
@@ -397,12 +499,12 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     let row = dateTbl.rows.length;
     let mc = 0;
     for(i=1;i<row;i++){
-      if(dateTbl.rows[i].cells[1].innerHTML > mc){
-        mc = dateTbl.rows[i].cells[1].innerHTML;
+      if(dateTbl.rows[i].cells[2].innerHTML > mc){
+        mc = dateTbl.rows[i].cells[2].innerHTML;
       }
     }
     for(j=0;j<row;j++){
-      if(dateTbl.rows[j].cells[1].innerHTML == mc && mc > 0){
+      if(dateTbl.rows[j].cells[2].innerHTML == mc && mc > 0){
         dateTbl.rows[j].style.backgroundColor = "pink";
       }
     }
@@ -414,16 +516,17 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     let row = shopTbl.rows.length;
     let mc = 0;
     for(i=1;i<row;i++){
-      if(shopTbl.rows[i].cells[1].innerHTML > mc){
-        mc = shopTbl.rows[i].cells[1].innerHTML;
+      if(shopTbl.rows[i].cells[2].innerHTML > mc){
+        mc = shopTbl.rows[i].cells[2].innerHTML;
       }
     }
     for(j=0;j<row;j++){
-      if(shopTbl.rows[j].cells[1].innerHTML == mc && mc > 0){
+      if(shopTbl.rows[j].cells[2].innerHTML == mc && mc > 0){
         shopTbl.rows[j].style.backgroundColor = "pink";
       }
     }
   }
+
 
   function check_name() {
       const userName = document.getElementById("join-user");

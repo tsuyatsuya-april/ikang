@@ -1,154 +1,189 @@
 <%= render "header" %>
 <p id="edit-pass">イベント編集ページです</p>
-<table id="edit-days">
-  <thead>
-    <tr>
-      <th id="edit-prev">&laquo;</th>
-      <th id="edit-title" colspan="5">2020/05</th>
-      <th id="edit-next">&raquo;</th>
-    </tr> 
-    <tr>
-      <th>Sun</th>
-      <th>Mon</th>
-      <th>Tue</th>
-      <th>Wed</th>
-      <th>Thu</th>
-      <th>Fri</th>
-      <th>Sat</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-  </tbody>
-  <tfoot>
-    <tr>
-      <td id="edit-today" colspan="7">Today</td>
-    </tr>
-  </tfoot>
-</table>
-<br>
-<div><h3>イベント登録</h3></div>
-<%= form_for @event, local: true do |f| %>
-  <%= render "share/error_messages", model: f.object %>
-  <div><p>イベント名</p></div>
-  <%= f.text_field :name %>
-  <div><p>詳細</p></div>
-  <%= f.text_area :description %>
-
-  <div><h3>日程</h3></div>
-  <div id="edit-select-days">
-    <%= f.fields_for :schedules, @event.schedules do |schedule_fields| %>  
-      <ul id="edit-add-date-style">
-        <li class = "edit-date-input">
-          <%= schedule_fields.date_field :savedate %>
-        </li>
-        <li class = "edit-date-time"> 
-          <%= schedule_fields.select :savetime, [
-            ["00:00~","0:00"], ["00:30~", "0:30"], 
-            ["01:00~", "1:00"],["01:30~", "1:30"],
-            ["02:00~", "2:00"],["02:30~", "2:30"],
-            ["03:00~", "3:00"],["03:30~", "3:30"],
-            ["04:00~", "4:00"],["04:30~", "4:30"],
-            ["05:00~", "5:00"],["05:30~", "5:30"],
-            ["06:00~", "6:00"],["06:30~", "6:30"],
-            ["07:00~", "7:00"],["07:30~", "7:30"],
-            ["08:00~", "8:00"],["08:30~", "8:30"],
-            ["09:00~", "9:00"],["09:30~", "9:30"],
-            ["10:00~", "10:00"],["10:30~", "10:30"],
-            ["11:00~", "11:00"],["11:30~", "11:30"],
-            ["12:00~", "12:00"],["12:30~", "12:30"],
-            ["13:00~", "13:00"],["13:30~", "13:30"],
-            ["14:00~", "14:00"],["14:30~", "14:30"],
-            ["15:00~", "15:00"],["15:30~", "15:30"],
-            ["16:00~", "16:00"],["16:30~", "16:30"],
-            ["17:00~", "17:00"],["17:30~", "17:30"],
-            ["18:00~", "18:00"],["18:30~", "18:30"],
-            ["19:00~", "19:00"],["19:30~", "19:30"],
-            ["20:00~", "20:00"],["20:30~", "20:30"],
-            ["21:00~", "21:00"],["21:30~", "21:30"],
-            ["22:00~", "22:00"],["22:30~", "22:30"],
-            ["23:00~", "23:00"],["23:30~", "23:30"],
-            ], 
-              {include_blank: "選択",selected:"19:00"}, class: "edit-date-time" %>
-        </li>
-        <li id = "edit-delete" >
-          <%= link_to "日程削除", event_schedule_path(params[:id],schedule_fields.object.id), method: :delete %>
-        </li>
-      </ul>
+<div class="main-box">
+  <div class="event-title-box">
+    <h3 class="event-title">イベント編集</h3>
+    <div id="event-delete-box">
+      <%= link_to "イベント自体削除",event_path(params[:id]),class:"btn-flat-border-all", method: :delete %>
+    </div>
+  </div>
+  <div class="event-new-box">
+    <%= form_for @event, local: true do |f| %>
+      <%= render "share/error_messages", model: f.object %>
+      <div class="event">
+        <div class="event-name">
+          <p>イベント名</p>
+          <%= f.text_field :name, class:"event-name-input"%>
+        </div>
+        <div class="event-description">
+          <p>詳細</p>
+          <%= f.text_area :description, class:"event-description-input" %>
+        </div>
+      </div>
+      <div class="schedule-title">
+          <h3>日程<span class="sub-information">(追加する日付をカレンダーからクリックしてください)</span></h3>
+      </div>
+      <div class="schedule">
+        <div id="edit-select-days">
+          <%= f.fields_for :schedules, @event.schedules do |schedule_fields| %>  
+            <ul id="edit-add-date-style">
+              <li class = "edit-date-input">
+                <%= schedule_fields.date_field :savedate,  class:"savedate-input" %>
+              </li>
+              <li class = "edit-date-time"> 
+                <%= schedule_fields.select :savetime, [
+                  ["00:00~","0:00"], ["00:30~", "0:30"], 
+                  ["01:00~", "1:00"],["01:30~", "1:30"],
+                  ["02:00~", "2:00"],["02:30~", "2:30"],
+                  ["03:00~", "3:00"],["03:30~", "3:30"],
+                  ["04:00~", "4:00"],["04:30~", "4:30"],
+                  ["05:00~", "5:00"],["05:30~", "5:30"],
+                  ["06:00~", "6:00"],["06:30~", "6:30"],
+                  ["07:00~", "7:00"],["07:30~", "7:30"],
+                  ["08:00~", "8:00"],["08:30~", "8:30"],
+                  ["09:00~", "9:00"],["09:30~", "9:30"],
+                  ["10:00~", "10:00"],["10:30~", "10:30"],
+                  ["11:00~", "11:00"],["11:30~", "11:30"],
+                  ["12:00~", "12:00"],["12:30~", "12:30"],
+                  ["13:00~", "13:00"],["13:30~", "13:30"],
+                  ["14:00~", "14:00"],["14:30~", "14:30"],
+                  ["15:00~", "15:00"],["15:30~", "15:30"],
+                  ["16:00~", "16:00"],["16:30~", "16:30"],
+                  ["17:00~", "17:00"],["17:30~", "17:30"],
+                  ["18:00~", "18:00"],["18:30~", "18:30"],
+                  ["19:00~", "19:00"],["19:30~", "19:30"],
+                  ["20:00~", "20:00"],["20:30~", "20:30"],
+                  ["21:00~", "21:00"],["21:30~", "21:30"],
+                  ["22:00~", "22:00"],["22:30~", "22:30"],
+                  ["23:00~", "23:00"],["23:30~", "23:30"],
+                  ], 
+                    {include_blank: "選択",selected:"19:00"}, class: "date-time-input" %>
+              </li>
+              <li id = "edit-delete" >
+                <%= link_to "日程削除", event_schedule_path(params[:id],schedule_fields.object.id),class:"btn-flat-border-red", method: :delete %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+        <div id="schedule-calender">
+          <table id="edit-days">
+            <thead class="calender-thead">
+              <tr>
+                <th id="edit-prev">&laquo;</th>
+                <th id="edit-title" colspan="5">2020/05</th>
+                <th id="edit-next">&raquo;</th>
+              </tr> 
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody class="calender-tbody">
+            </tbody>
+            <tfoot class="calender-tfoot">
+              <tr>
+                <td id="edit-today" colspan="7">Today</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="store">
+        <div class="store-title-box">
+          <div class="store-title">
+            <h3>お店登録</h3>
+          </div>
+          <div id="edit-shop-add-btn">
+            <%= link_to "お店追加", "#", class:"btn-flat-border" %>
+          </div>
+        </div>
+        <div id="edit-shop-top">
+          <%= f.fields_for :shops do |shop_fields| %>
+            <div id="edit-shop">
+              <div id="shop-name-box">
+                <div id="shop-name"><p>店名</p></div>
+                <%= shop_fields.text_field :shop_name, class:"shop-name-input" %>
+              </div>
+              <div id="shop-url-box">
+                <div id="shop-rul"><p>店のURL</p></div>
+                <%= shop_fields.text_field :shop_url, class:"shop-url-input" %>
+              </div>
+              <div id="shop-map-box">
+                <div id="shop-map"><p>地図のURL</p></div>
+                <%= shop_fields.text_field :map_url, class:"shop-map-input" %>
+              </div>
+              <div id="shop-comment-box">
+                <div id="shop-comment"><p>コメント</p></div>
+                <%= shop_fields.text_field :comment, class:"shop-comment-input" %>
+              </div>
+              <div id="shop-delete-box">
+                <%= link_to "お店削除", event_shop_path(params[:id],shop_fields.object.id), class:"btn-flat-border-red",method: :delete %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="submit-box">
+        <%= f.submit "登録情報の更新",class:"btn-flat-border-submit", id:"edit-submit" %>
+      </div>
     <% end %>
-    <p><b>日程を追加したい場合はカレンダーの日付をクリック下さい</b></p>
   </div>
-  <div><h3>店名</h3></div>
-  <div id="edit-shop-add-btn">
-    <h3>お店追加</h3>
-  </div>
-  <%= f.fields_for :shops do |shop_fields| %>
-    <div id="edit-shop-top">
-      <div id="edit-shop">
-        <div><p>店名</p></div>
-        <%= shop_fields.text_field :shop_name %>
-        <div><p>店のURL</p></div>
-        <%= shop_fields.text_field :shop_url %>
-        <div><p>地図のURL</p></div>
-        <%= shop_fields.text_field :map_url %>
-        <div><p>コメント</p></div>
-        <%= shop_fields.text_field :comment %>
-        <%= link_to "お店削除", event_shop_path(params[:id],shop_fields.object.id), method: :delete %>
-      </div>
+  
+
+  <%= form_with model: @schedule, url:event_schedules_path(@event.id), id: "edit-schedule-form", local: true do |schedule| %>
+    <div>
+      <%= schedule.date_field :savedate, id:"only-date-input" %>
     </div>
+    <div> 
+      <%= schedule.select :savetime, [
+        ["00:00~","0:00"], ["00:30~", "0:30"], 
+        ["01:00~", "1:00"],["01:30~", "1:30"],
+        ["02:00~", "2:00"],["02:30~", "2:30"],
+        ["03:00~", "3:00"],["03:30~", "3:30"],
+        ["04:00~", "4:00"],["04:30~", "4:30"],
+        ["05:00~", "5:00"],["05:30~", "5:30"],
+        ["06:00~", "6:00"],["06:30~", "6:30"],
+        ["07:00~", "7:00"],["07:30~", "7:30"],
+        ["08:00~", "8:00"],["08:30~", "8:30"],
+        ["09:00~", "9:00"],["09:30~", "9:30"],
+        ["10:00~", "10:00"],["10:30~", "10:30"],
+        ["11:00~", "11:00"],["11:30~", "11:30"],
+        ["12:00~", "12:00"],["12:30~", "12:30"],
+        ["13:00~", "13:00"],["13:30~", "13:30"],
+        ["14:00~", "14:00"],["14:30~", "14:30"],
+        ["15:00~", "15:00"],["15:30~", "15:30"],
+        ["16:00~", "16:00"],["16:30~", "16:30"],
+        ["17:00~", "17:00"],["17:30~", "17:30"],
+        ["18:00~", "18:00"],["18:30~", "18:30"],
+        ["19:00~", "19:00"],["19:30~", "19:30"],
+        ["20:00~", "20:00"],["20:30~", "20:30"],
+        ["21:00~", "21:00"],["21:30~", "21:30"],
+        ["22:00~", "22:00"],["22:30~", "22:30"],
+        ["23:00~", "23:00"],["23:30~", "23:30"],
+        ], 
+          {include_blank: "選択",selected:"19:00"}, class: "only-time-input" %>
+    </div>
+    <%= schedule.submit "Submit" %>
   <% end %>
-  <%= f.submit "Submit" %>
-<% end %>
-<%= link_to "イベント自体削除",event_path(params[:id]), method: :delete %>
 
-<%= form_with model: @schedule, url:event_schedules_path(@event.id), id: "edit-schedule-form", local: true do |schedule| %>
-  <div>
-    <%= schedule.date_field :savedate, id:"only-date-input" %>
-  </div>
-  <div> 
-    <%= schedule.select :savetime, [
-      ["00:00~","0:00"], ["00:30~", "0:30"], 
-      ["01:00~", "1:00"],["01:30~", "1:30"],
-      ["02:00~", "2:00"],["02:30~", "2:30"],
-      ["03:00~", "3:00"],["03:30~", "3:30"],
-      ["04:00~", "4:00"],["04:30~", "4:30"],
-      ["05:00~", "5:00"],["05:30~", "5:30"],
-      ["06:00~", "6:00"],["06:30~", "6:30"],
-      ["07:00~", "7:00"],["07:30~", "7:30"],
-      ["08:00~", "8:00"],["08:30~", "8:30"],
-      ["09:00~", "9:00"],["09:30~", "9:30"],
-      ["10:00~", "10:00"],["10:30~", "10:30"],
-      ["11:00~", "11:00"],["11:30~", "11:30"],
-      ["12:00~", "12:00"],["12:30~", "12:30"],
-      ["13:00~", "13:00"],["13:30~", "13:30"],
-      ["14:00~", "14:00"],["14:30~", "14:30"],
-      ["15:00~", "15:00"],["15:30~", "15:30"],
-      ["16:00~", "16:00"],["16:30~", "16:30"],
-      ["17:00~", "17:00"],["17:30~", "17:30"],
-      ["18:00~", "18:00"],["18:30~", "18:30"],
-      ["19:00~", "19:00"],["19:30~", "19:30"],
-      ["20:00~", "20:00"],["20:30~", "20:30"],
-      ["21:00~", "21:00"],["21:30~", "21:30"],
-      ["22:00~", "22:00"],["22:30~", "22:30"],
-      ["23:00~", "23:00"],["23:30~", "23:30"],
-      ], 
-        {include_blank: "選択",selected:"19:00"}, class: "only-time-input" %>
-  </div>
-   <%= schedule.submit "Submit" %>
-<% end %>
-
-<%= form_with model: @shop, url:event_shops_path(@event.id), id: "edit-shop-form", local: true do |shop| %>
-  <div id="edit-shop-top">
-      <div id="edit-shop">
-        <div><p>店名</p></div>
-        <%= shop.text_field :shop_name, id:"only-shop-name" %>
-        <div><p>店のURL</p></div>
-        <%= shop.text_field :shop_url %>
-        <div><p>地図のURL</p></div>
-        <%= shop.text_field :map_url %>
-        <div><p>コメント</p></div>
-        <%= shop.text_field :comment %>
+  <%= form_with model: @shop, url:event_shops_path(@event.id), id: "edit-shop-form", local: true do |shop| %>
+    <div id="edit-shop-top">
+        <div id="edit-shop">
+          <div><p>店名</p></div>
+          <%= shop.text_field :shop_name, id:"only-shop-name" %>
+          <div><p>店のURL</p></div>
+          <%= shop.text_field :shop_url %>
+          <div><p>地図のURL</p></div>
+          <%= shop.text_field :map_url %>
+          <div><p>コメント</p></div>
+          <%= shop.text_field :comment %>
+        </div>
       </div>
-    </div>
-  <%= shop.submit "Submit" %>
-<% end %>
+    <%= shop.submit "Submit" %>
+  <% end %>
+</div>
