@@ -17,6 +17,8 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       shopEditStatusValue();
       DateEditStatusValue();
       modalCloseJoin();
+      EditDirection();
+      noOneEditDirection();
     } else {
       modalAddJoin();
       modalAddShop();
@@ -395,6 +397,44 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
           receiveVote[i].value = 1;
           if(passVote[i].classList.contains("choice") == false){
             passVote[i].classList.add("choice");
+          }
+        }
+      }
+    }
+  }
+  function EditDirection(){
+    let editVote = document.querySelectorAll("#shops-edit-vote");
+    let editVoteShape = document.querySelectorAll("#shop-edit-vote");
+    let editVoteLength = editVote.length;
+    for(let i=0; i<editVoteLength; i++){
+      if(editVote[i].value == 1){
+        editVoteShape[i].classList.add("choice");
+      }
+    }
+  }
+  function noOneEditDirection(){
+    let receiveEditVote = document.querySelectorAll("#shops-edit-vote");
+    let passEditVote = document.querySelectorAll("#shop-edit-vote");
+    let receiveEditVoteLength = receiveEditVote.length;
+    for(let i=0; i < receiveEditVoteLength;i++){
+      passEditVote[i].onclick = function(){
+        for(let j=0; j<receiveEditVoteLength; j++){
+          if(i != j){
+            if(passEditVote[j].classList.contains("choice") == true){
+              passEditVote[j].classList.remove("choice");
+            }
+            receiveEditVote[j].value = 0;
+          }
+        }
+        if(receiveEditVote[i].value == 1){
+          receiveEditVote[i].value = 0;
+          if(passEditVote[i].classList.contains("choice") == true){
+            passEditVote[i].classList.remove("choice");
+          }
+        }else{
+          receiveEditVote[i].value = 1;
+          if(passEditVote[i].classList.contains("choice") == false){
+            passEditVote[i].classList.add("choice");
           }
         }
       }

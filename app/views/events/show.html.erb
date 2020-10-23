@@ -382,24 +382,24 @@
           <div id="show-shop-top">
             <div id="show-shop">
               <div>
-                <div>店名(必須)</div>
-                <%= shop.text_field :shop_name, id:"show-shop-name" %>
+                <div class="show-shop-label">店名(必須)</div>
+                <%= shop.text_field :shop_name, id:"show-shop-name",class:"show-shop-input" %>
               </div>
               <div>
-                <div>店のURL(任意)</div>
-                <%= shop.text_field :shop_url, id:"show-shop-url" %>
+                <div class="show-shop-label">店のURL(任意)</div>
+                <%= shop.text_field :shop_url, id:"show-shop-url",class:"show-shop-input" %>
               </div>
               <div>
-                <div>地図のURL(任意）</div>
-                <%= shop.text_field :map_url, id:"show-map_url" %>
+                <div class="show-shop-label">地図のURL(任意）</div>
+                <%= shop.text_field :map_url, id:"show-map_url",class:"show-shop-input" %>
               </div>
-              <div>
-                <div>コメント(任意）</div>
-                <%= shop.text_field :comment, id:"show-shop-comment" %>
+              <div class="show-shop-end">
+                <div class="show-shop-label">コメント(任意）</div>
+                <%= shop.text_field :comment, id:"show-shop-comment",class:"show-shop-input" %>
               </div>
+              <%= shop.submit "お店情報登録",class:"btn-flat-border", id:"join-edit-submit-inputbox" %>
             </div>
           </div>
-          <%= shop.submit "お店情報登録",class:"btn-flat-border", id:"join-edit-submit-inputbox" %>
         <% end %>
       </section>
      </div>

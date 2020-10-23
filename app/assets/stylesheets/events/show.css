@@ -330,3 +330,107 @@ h1{
   color: black;
 }
 
+.field{
+  justify-content: center;
+}
+
+.sign-up,.log-in{
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contents,.contents-in{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.field-form{
+  width: 500px;
+  height: 30px;
+  margin: 5px 0 15px 0;
+  font-size: 18px;
+}
+
+.container{
+  width: 600px;
+  height: 500px;
+  background-color: rgb(248, 218, 222);
+  padding-left: 60px;
+  padding-top: 30px;
+  border: 1px solid lightgrey;
+  /* display: flex;
+  justify-content: center;
+  padding: 40px 0 10px 30px; */
+}
+.actions{
+  display: flex;
+  justify-content: center;
+  padding-right: 80px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.btn-flat-border-sign-up{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: white;
+  border: solid 2px #67c2ff;
+  border-radius: 3px;
+  transition: .4s;
+  width: 300px;
+  text-align: center;
+  height: 50px;
+  padding-top: 7px;
+  margin-top: 18px;
+  background-color: #84cbfa;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-flat-border-sign-up:hover{
+  background: #0e9af8;
+  color: white;
+}
+
+.container-in{
+  width: 600px;
+  height: 300px;
+  background-color: rgb(248, 218, 222);
+  padding-left: 60px;
+  padding-top: 30px;
+  border: 1px solid lightgrey;
+}
+
+.contents-in{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+#show-shop-top{
+  display: flex;
+  justify-content: center;
+}
+
+#show-shop{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.show-shop-label{
+  font-size:18px;
+  margin-bottom: 5px;
+}
+
+.show-shop-input{
+  width: 300px;
+  height: 24px;
+  margin-bottom: 10px;
+}
+
+.show-shop-end{
+  margin-bottom: 30px;
+}
