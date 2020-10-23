@@ -7,6 +7,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     shopStatusValue();
     CountDateStatus();
     CountShopStatus();
+    noOneDirection();
     //Count系のメソッドでまるばつサンカクを集計した後にexpect系メソッドで集計後の◯の最高値に対して背景色をつける
     //なので、Count系メソッド→expect系メソッドの順番でなければならない
     expectDay();
@@ -369,6 +370,37 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       dc++;
     };
   }
+  // 一番投票機能の実装
+  function noOneDirection(){
+    let receiveVote = document.querySelectorAll("#shops-vote");
+    let passVote = document.querySelectorAll("#shop-vote");
+    let receiveVoteLength = receiveVote.length;
+  
+    for(let i=0; i < receiveVoteLength;i++){  
+      passVote[i].onclick = function(){
+        for(let j=0; j<receiveVoteLength; j++){
+          if(i != j){
+            if(passVote[j].classList.contains("choice") == true){
+              passVote[j].classList.remove("choice");
+            }
+            receiveVote[j].value = 0;
+          }
+        }
+        if(receiveVote[i].value == 1){
+          receiveVote[i].value = 0;
+          if(passVote[i].classList.contains("choice") == true){
+            passVote[i].classList.remove("choice");
+          }
+        }else{
+          receiveVote[i].value = 1;
+          if(passVote[i].classList.contains("choice") == false){
+            passVote[i].classList.add("choice");
+          }
+        }
+      }
+    }
+  }
+
   // 日程の一覧表にマルバツサンカクの集計を反映させる
   function CountDateStatus(){
     let dateTbl = document.getElementById("date-table");
