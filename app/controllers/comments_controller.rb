@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    post = Post.create(content: parmas[:content])
-    render json:{ post: post}
+    comment = Comment.create(event_id: params[:event_id],content: params[:content])
+    render json:{ comment: comment}
+  end
 end

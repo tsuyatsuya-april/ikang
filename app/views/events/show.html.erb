@@ -407,7 +407,7 @@
   </div>
   <hr>
   <div id="comment-box">
-    <%= form_with model: @comment,url:event_comments_path(@event.id), id:"show-comment", local: true do |comment| %>
+    <%= form_with url:event_comments_path(@event.id),method: :post, id:"show-comment" do |comment| %>
       <div class="comment-label">
         イベントに関してコメントを記載下さい。(匿名)
       </div>
@@ -418,7 +418,7 @@
         <%= comment.submit "コメント送信",class:"btn-flat-border-comment", id:"comment-submit" %>
       </div>
     <% end %>
-   </div>
+  </div>
   <div class="comment-index">
     <% if @comments %>
       <div class="coment-index">
@@ -437,5 +437,4 @@
       </div>
     <% end %>
   </div>
-
 </div>

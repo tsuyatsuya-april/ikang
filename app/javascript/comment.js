@@ -1,10 +1,10 @@
-function comment(){
+function addComment(){
   const submit = document.getElementById("comment-submit");
   const eventPath = location.pathname;
   submit.addEventListener("click", (e) => {
     const formData = new FormData(document.getElementById("show-comment"));
     const XHR = new XMLHttpRequest();
-    XHR.open("POST", `${eventPath}/comments`, true);
+    XHR.open("POST", eventPath + "/comments" , true);
     XHR.responseType = "json";
     XHR.send(formData);
     XHR.onload = () => {
@@ -12,7 +12,7 @@ function comment(){
         alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;
       }
-      const comment = XHR.response.post;
+      const comment = XHR.response.comment;
       const list = document.getElementById("comment-add-list");
       const fromText = document.getElementById("comment-area");
       const HTML = `
@@ -30,4 +30,4 @@ function comment(){
     e.preventDefault();
   });
 }
-window.addEventListener("load", comment);
+window.addEventListener("load", addComment);
