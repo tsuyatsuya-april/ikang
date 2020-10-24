@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     resources :schedules
     resources :shops
     resources :joins
+    resources :comments
   end
 end

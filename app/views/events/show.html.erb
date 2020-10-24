@@ -134,9 +134,10 @@
             <div>
               <span id="pass-shop-url">店のURL/<%= es.shop_url %></span>
             </div>
-            <div>
-              <span id="pass-map-url">地図のURL/<%= es.map_url %></span>
-            </div>
+            <%# <div>
+              <span id="pass-map-url">地図のURL/<%= es.map_url %>
+              <%# </span>
+            </div> %>
             <div>
               <span id="pass-comment">コメント/<%= es.comment %></span> 
             </div>
@@ -404,4 +405,37 @@
       </section>
      </div>
   </div>
+  <hr>
+  <div id="comment-box">
+    <%= form_with model: @comment,url:event_comments_path(@event.id), id:"show-comment", local: true do |comment| %>
+      <div class="comment-label">
+        イベントに関してコメントを記載下さい。(匿名)
+      </div>
+      <div class="comment-content">
+        <%= comment.text_area :content, class:"comment-erea", id:"comment-area" %>
+      </div>
+      <div class="comment-submit-box">
+        <%= comment.submit "コメント送信",class:"btn-flat-border-comment", id:"comment-submit" %>
+      </div>
+    <% end %>
+   </div>
+  <div class="comment-index">
+    <% if @comments %>
+      <div class="coment-index">
+        <div id="comment-add-list">
+        </div>
+        <% @comments.each do |c| %>
+          <div class="coment-detail">
+            <div class="comment-name">
+              名無しさん
+            </div>
+            <div class="show-comment">
+              <%= c.content %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
 </div>
