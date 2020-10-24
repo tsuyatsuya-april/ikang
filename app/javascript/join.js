@@ -59,8 +59,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       for(let i=0; i<targetNum5; i++){
         targetList5[i].removeAttribute("name","join[shop_answers_attributes][0][vote]")
         targetList5[i].setAttribute("name",`join[shop_answers_attributes][${i}][vote]`)
-      }
-        
+      } 
     }
     //お店のスケジュールステータスの状態変化
     function shopStatusValue(){

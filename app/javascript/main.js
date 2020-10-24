@@ -175,6 +175,7 @@ if(path === "/events/new" || path === "/events"
       }
       //HTML要素を作成して、追加するメソッド
       function createHTML (date_string) {
+        nameNumberDateAdjust();
         const ParentNode = document.getElementById("select-days");
 
         //選択フォームを作成する元となるul要素を生成
@@ -272,6 +273,7 @@ if(path === "/events/new" || path === "/events"
       };
       
       function newShopAdd(){
+        nameNumberShopAdjust();
         const shopParent = document.getElementById("new-shop-top");
         const addShopBtn = document.getElementById("shop-add-btn");
         let currentShopLength = document.querySelectorAll("#new-shop").length;
@@ -318,6 +320,37 @@ if(path === "/events/new" || path === "/events"
             }
           };
         };
+      }
+
+      function nameNumberDateAdjust(){
+        let saveDate = document.querySelectorAll(".savedate-input");
+        let saveTime = document.querySelectorAll(".date-time-input");
+        let saveDateLength = saveDate.length;
+        for(let i=0; i<saveDateLength; i++){
+          saveDate[i].removeAttribute("name");
+          saveDate[i].setAttribute("name",`event[schedules_attributes][${i}][savedate]`);
+          saveTime[i].removeAttribute("name");
+          saveTime[i].setAttribute("name",`event[schedules_attributes][${i}][savetime]`);
+        }
+      }
+
+
+      function nameNumberShopAdjust(){
+        let saveShop = document.querySelectorAll(".shop-name-input");
+        let saveShopUrl= document.querySelectorAll(".shop-url-input");
+        let saveShopMap = document.querySelectorAll(".shop-map-input");
+        let saveShopComment = document.querySelectorAll(".shop-comment-input");
+        let saveShopLength = saveShop.length;
+        for(let j=0; j<saveShopLength; j++){
+          saveShop[j].removeAttribute("name");
+          saveShop[j].setAttribute("name",`event[shops_attributes][${j}][shop_name]`);
+          saveShopUrl[j].removeAttribute("name");
+          saveShopUrl[j].setAttribute("name",`event[shops_attributes][${j}][shop_url]`);
+          saveShopMap[j].removeAttribute("name");
+          saveShopMap[j].setAttribute("name",`event[shops_attributes][${j}][map_url]`);
+          saveShopComment[j].removeAttribute("name");
+          saveShopComment[j].setAttribute("name",`event[shops_attributes][${j}][comment]`);
+        }
       }
     } 
   };

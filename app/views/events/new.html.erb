@@ -2,7 +2,7 @@
 <div class="main-box">
   <h3 class="event-title">イベント登録</h3>
   <div class="event-new-box">
-    <%= form_for @event, local: true do |f| %>
+    <%= form_for @event,id:"event-new-form", local: true do |f| %>
       <%= render "share/error_messages", model: f.object %>
       <div class="event">
         <div class="event-name">
