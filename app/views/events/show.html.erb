@@ -123,6 +123,7 @@
               </td>
             <% end %>
           <% end %>
+          <td class="hidden"></td>
         </tr>
       </thead>
       <% @event.shops.each do |es| %>
@@ -171,6 +172,7 @@
               </td>
             <% end %>
           <% end %>
+          <td class="hidden"><%= es.shop_answer.all.sum(:vote) %></td>
         </tr>
       <% end %>
     </table>
