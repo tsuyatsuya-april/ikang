@@ -123,7 +123,7 @@
               </td>
             <% end %>
           <% end %>
-          <td class="hidden"></td>
+          <td class="best">オススメ</td>
         </tr>
       </thead>
       <% @event.shops.each do |es| %>
@@ -172,7 +172,10 @@
               </td>
             <% end %>
           <% end %>
-          <td class="hidden"><%= es.shop_answer.all.sum(:vote) %></td>
+          <td class="switch-vote">
+            <div class="hidden table-vote-total"><%= es.shop_answer.all.sum(:vote) %></div>
+            <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow choice hidden vote-symbol">一番</h1>
+          </td>
         </tr>
       <% end %>
     </table>
