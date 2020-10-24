@@ -10,6 +10,14 @@
         <div class="show-event-description">詳細 </div>
         <div class="show-event-description-detail"><%= @event.description %></div>
       </div>
+      <div class="event-url-box">
+        <div class="event-url-label">
+        イベント<span class="alfabet">URL</span>
+        </div>
+        <div class="event-url">
+          <%= request.url %>
+        </div>
+      </div>
     </div>
     <div class="event-show-btns">
       <div id="open">
