@@ -24,7 +24,7 @@ function addComment(){
             ${comment.content}
           </div>
         </div>`;
-      list.insertAdjacentHTML("afterend", HTML);
+      list.insertAdjacentHTML("beforeend", HTML);
       fromText.value = "";
     };
     e.preventDefault();

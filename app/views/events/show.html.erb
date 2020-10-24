@@ -420,12 +420,14 @@
     <% end %>
   </div>
   <div class="comment-index">
+    <div class="comment-title">
+      コメント一覧
+    </div>
+    <hr>
     <% if @comments %>
-      <div class="coment-index">
-        <div id="comment-add-list">
-        </div>
+      <div class="comment-index">
         <% @comments.each do |c| %>
-          <div class="coment-detail">
+          <div class="comment-detail">
             <div class="comment-name">
               名無しさん
             </div>
@@ -434,6 +436,8 @@
             </div>
           </div>
         <% end %>
+        <div id="comment-add-list">
+        </div>
       </div>
     <% end %>
   </div>
