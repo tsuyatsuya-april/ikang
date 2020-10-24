@@ -26,6 +26,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = Comment.all
     @joins = Join.all
     @shop = Shop.new
     if params[:join_id]

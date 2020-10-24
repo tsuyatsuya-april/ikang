@@ -1,10 +1,12 @@
 
 .main-show-box{
-  margin:  0 5% 5% 5%;
+  margin:  0 4% 3% 4%;
+
   display: flex;
   flex-direction: column;
   width: 90%;
-  background: rgb(255, 255, 255);
+  background: rgb(247, 241, 245);
+  padding-left: 10px;
 }
 
 .show-event-box{
@@ -442,4 +444,73 @@ h1{
 
 #join-edit-submit-inputbox{
   margin-left: 25px;
+}
+
+#comment-box{
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0 0 18px;
+}
+
+#shop-table{
+  margin-bottom: 20px;
+  border: 1px solid lightslategray;
+}
+
+#date-table{
+  border: 1px solid lightslategray;
+}
+
+.comment-content{
+  margin-top: 5px;
+}
+
+.comment-erea{
+  width: 600px;
+  height: 50px;
+}
+
+.comment-submit-box{
+  width: 570px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-flat-border-comment{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  background-color: #f882f8;
+  color: white;
+  border: solid 2px #f5a8f5;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-flat-border-comment:hover{
+  background-color: #f808f8;
+  cursor: pointer;
+}
+
+.comment-index{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.comment-title{
+  margin: 20px 0;
+}
+.comment-detail{
+  margin-bottom: 30px;
+}
+
+.show-comment{
+  font-size: 14px;
+}
+
+.comment-index{
+  margin-left: 18px;
+}
+
+.comment-name{
+  margin-bottom: 5px;
 }

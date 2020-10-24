@@ -10,6 +10,7 @@ require("channels")
 require("../main")
 require("../main_edit")
 require("../join")
+require("../comment")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
