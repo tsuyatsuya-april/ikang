@@ -514,3 +514,12 @@ h1{
 .comment-name{
   margin-bottom: 5px;
 }
+
+.switch-vote{
+  width: 40px;
+  font-size: 14px;
+}
+
+.best{
+  font-size: 14px;
+}

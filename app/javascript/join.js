@@ -12,6 +12,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     //なので、Count系メソッド→expect系メソッドの順番でなければならない
     expectDay();
     expectShop();
+    expectVote();
     if(query.includes("join_id")){
       transEditLabel();
       shopEditStatusValue();
@@ -401,6 +402,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       }
     }
   }
+  //編集時に投票の入力値に１が入っているときに一番マークが選択マークになるようにする
   function EditDirection(){
     let editVote = document.querySelectorAll("#shops-edit-vote");
     let editVoteShape = document.querySelectorAll("#shop-edit-vote");
@@ -411,6 +413,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       }
     }
   }
+  //投票機能についてクリックしたら値が入って、選択マークが固定されるようにする
   function noOneEditDirection(){
     let receiveEditVote = document.querySelectorAll("#shops-edit-vote");
     let passEditVote = document.querySelectorAll("#shop-edit-vote");
@@ -525,6 +528,34 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
       }
     }
   }
+
+  // 投票最高値に一番のマークを表示する機能
+  function expectVote(){
+    let voteSums = document.querySelectorAll(".table-vote-total");
+    let voteTd = document.querySelectorAll(".vote-symbol");
+    let voteLength = voteSums.length;
+    let maxNum = 0;
+    for(i=0;i<voteLength;i++){
+      if(Number(voteSums[i].innerHTML) > maxNum){
+        maxNum = Number(voteSums[i].innerHTML);
+      }
+    }
+    for(j=0;j<voteLength;j++){
+      if(Number(voteSums[j].innerHTML) == maxNum && maxNum > 0){
+        if(voteTd[j].classList.contains("hidden")){
+          voteTd[j].classList.remove("hidden");
+        }
+      } else {
+        if(voteTd[j].classList.contains("hidden")){
+
+        } else {
+          voteTd[j].classList.add("hidden");
+        }
+      }
+    }
+
+  }
+  
 
 
   function check_name() {
