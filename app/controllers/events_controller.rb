@@ -62,6 +62,7 @@ class EventsController < ApplicationController
     end
   end
 
+
   private 
 
   def event_params
@@ -85,4 +86,6 @@ class EventsController < ApplicationController
       redirect_to action: :index
     end
   end
+
+  
 end

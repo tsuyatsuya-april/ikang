@@ -1,0 +1,2 @@
+module ShopDecisionsHelper
+end

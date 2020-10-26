@@ -588,3 +588,7 @@ h1{
   color:#fff;
 }
 
+.date-decesions-box, .shop-decesions-box{
+  display: flex;
+}
+
