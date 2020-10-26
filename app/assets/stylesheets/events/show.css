@@ -473,8 +473,6 @@ h1{
 
 .comment-submit-box{
   width: 570px;
-  display: flex;
-  justify-content: center;
 }
 
 .btn-flat-border-comment{
@@ -510,6 +508,7 @@ h1{
 
 .comment-index{
   margin-left: 18px;
+  margin-top: 30px;
 }
 
 .comment-name{
@@ -550,4 +549,8 @@ h1{
 .alfabet{
   font-size: 16px;
   font-weight: bold;
+}
+
+.event-show-btns{
+  margin-top: 30px;
 }
