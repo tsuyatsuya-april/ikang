@@ -8,6 +8,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     CountDateStatus();
     CountShopStatus();
     noOneDirection();
+    urlCopy();
     //Count系のメソッドでまるばつサンカクを集計した後にexpect系メソッドで集計後の◯の最高値に対して背景色をつける
     //なので、Count系メソッド→expect系メソッドの順番でなければならない
     expectDay();
@@ -555,7 +556,35 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     }
 
   }
-  
+  //クリップボードコピー機能
+  function urlCopy(){
+    let copyBtn = document.getElementById("url-copy");
+    copyBtn.onclick = function() {
+      const element = document.querySelector('#url-input');
+      // seletionオブジェクトを取得します。
+      const selection = window.getSelection();
+      // rangeオブジェクトを生成します。
+      const range = document.createRange();
+      // rangeオブジェクトに p要素を与えます。
+      range.selectNodeContents(element);
+      // 一旦、selectionオブジェクトの持つ rangeオブジェクトを削除します。
+      selection.removeAllRanges();
+      // 改めて先程生成した rangeオブジェクトを selectionオブジェクトに追加します。
+      selection.addRange(range);
+      console.log('選択された文字列: ', selection.toString());
+      // クリップボードにコピーします。
+      const succeeded = document.execCommand('copy');
+      if (succeeded) {
+          // コピーに成功した場合の処理です。
+          console.log('コピーが成功しました！');
+      } else {
+          // コピーに失敗した場合の処理です。
+          console.log('コピーが失敗しました!');
+      }
+      // selectionオブジェクトの持つrangeオブジェクトを全て削除しておきます。
+      selection.removeAllRanges();
+    }
+  }
 
 
   function check_name() {

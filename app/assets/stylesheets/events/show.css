@@ -35,7 +35,8 @@
   font-size: 16px;
   width: 100%;
   height: 60px;
-  border: 1px solid lightgray;
+  border: 1px solid lightslategray;
+  background-color: white;
 }
 
 .event-show-btns{
@@ -472,8 +473,6 @@ h1{
 
 .comment-submit-box{
   width: 570px;
-  display: flex;
-  justify-content: center;
 }
 
 .btn-flat-border-comment{
@@ -509,6 +508,7 @@ h1{
 
 .comment-index{
   margin-left: 18px;
+  margin-top: 30px;
 }
 
 .comment-name{
@@ -523,3 +523,68 @@ h1{
 .best{
   font-size: 14px;
 }
+
+.event-url-label{
+  font-size: 14px;
+  padding-top: 7px;
+}
+
+.event-url-box{
+  
+  margin: 20px 0 20px 0;
+}
+
+.event-url{
+  background-color: white;
+  width: 595px;
+  height: 20px;
+  padding-top: 7px;
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  
+  border: 1px solid lightslategray;
+}
+
+.alfabet{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.event-show-btns{
+  margin-top: 30px;
+}
+
+.event-url-sub-box{
+  display: flex;
+}
+
+#url-copy{
+  margin-left: 10px;
+  padding-bottom: 7px;
+}
+
+
+
+.mini-btn {
+  display: block;
+  width: 50px;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  background: #888; /* ボタン背景色 */
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing:1px;
+  line-height: 1.8;
+  overflow: hidden;
+  position: relative;
+}
+.mini-btn:hover {
+  color:#fff;
+}
+
