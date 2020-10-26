@@ -554,3 +554,37 @@ h1{
 .event-show-btns{
   margin-top: 30px;
 }
+
+.event-url-sub-box{
+  display: flex;
+}
+
+#url-copy{
+  margin-left: 10px;
+  padding-bottom: 7px;
+}
+
+
+
+.mini-btn {
+  display: block;
+  width: 50px;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  background: #888; /* ボタン背景色 */
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 0px 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing:1px;
+  line-height: 1.8;
+  overflow: hidden;
+  position: relative;
+}
+.mini-btn:hover {
+  color:#fff;
+}
+

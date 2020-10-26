@@ -22,8 +22,13 @@
         <div class="event-url-label">
         イベント<span class="alfabet">URL</span>
         </div>
-        <div class="event-url">
-          <%= request.url %>
+        <div class="event-url-sub-box">
+          <div class="event-url">
+            <span id="url-input"><%= request.url %></span>
+          </div>
+          <div id="url-copy">
+            <span class="mini-btn">copy</span>
+          </div>
         </div>
       </div>
     </div>
