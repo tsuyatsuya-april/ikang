@@ -37,6 +37,7 @@
         </div>
       </div>
     </div>
+    <hr>
     <% if @event.date_decisions.find_by(status: 1) %>
       <%= form_with model: @date_decision,url:event_date_decision_path(@event.id, @date_decision.id), id:"date-decesion-form", local: true do |dd|%>
         <div class="date-decesion-explain">変更したい日程を選択して更新をお願いします。</div>
@@ -45,7 +46,7 @@
           <%= dd.hidden_field :event_id %>
           <%= dd.collection_select(:schedule_id, @schedules, :id,:date_time,{},{class:"select-box", id:"date-decesion-select"}) %>
           <%= dd.hidden_field :status, value:1 %>
-          <%= dd.submit "イベント更新決定" ,class:"buy-red-btn", id:"date-decesion-submit"%>
+          <%= dd.submit "イベント日程更新" ,class:"buy-red-btn", id:"date-decesion-submit"%>
         </div>
       <% end %>
     <% else %>
@@ -136,7 +137,29 @@
       <% end %>
     </table>
     <br>
+    <hr>
     <br>
+    <% if @event.shop_decisions.find_by(status: 1) %>
+      <%= form_with model: @shop_decision,url:event_shop_decision_path(@event.id, @shop_decision.id), id:"shop-decesion-form", local: true do |sd|%>
+        <div class="shop-decesion-explain">変更したいお店を選択して更新をお願いします。</div>
+        <div class="shop-decesion-box">
+          <%= sd.hidden_field :id %>
+          <%= sd.hidden_field :event_id %>
+          <%= sd.collection_select(:shop_id, @shops_d, :id,:shop_name,{},{class:"select-box", id:"shop-decesion-select"}) %>
+          <%= sd.hidden_field :status, value:1 %>
+          <%= sd.submit "イベント場所更新" ,class:"buy-red-btn", id:"shop-decesion-submit"%>
+        </div>
+      <% end %>
+    <% else %>
+      <%= form_with model: @shop_decision,url:event_shop_decisions_path(@event.id),id:"shop-decesion-form", local: true do |sd|%>
+        <div class="shop-decesion-explain">お店が決定した場合にボタンをクリックお願いします</div>
+        <div class="shop-decesion-box">
+          <%= sd.collection_select(:shop_id, @shops_d, :id,:shop_name,{},{class:"select-box", id:"date-decesion-select"}) %>
+          <%= sd.hidden_field :status, value:1 %>
+          <%= sd.submit "イベント場所決定" ,class:"buy-red-btn", id:"shop-decesion-submit"%>
+        </div>
+      <% end %>
+    <% end %>
     <table id="shop-table">
       <thead class="event-show-data">
         <tr>
@@ -485,53 +508,4 @@
       </div>
     <% end %>
   </div>
-  <%= form_with url:event_date_decisions_path(@event.id), local: true do |dd|%>
-    <% @event.schedules.each do |et| %>
-      <%= dd.fields_for :date_decisions do |date_decision| %>
-        <div class="date-decesions-box">
-          <div class="date-decesion-box">
-            <% answerdate = et.savedate.to_s %>
-            <span>
-              <%= answerdate[5,2] %>月<%= answerdate[8,2] %>日
-            </span>
-            <% answertime = et.savetime.to_s%>
-            <span>
-              <%= answertime[0,2] %>:<%= answertime[3,2] %>~
-            </span>
-          </div>
-          <div class="date-decesion-vote-box">
-            <%= date_decision.hidden_field :schedule_id,class:"decesition-schedule-id", value: et.id %>
-            <%= date_decision.hidden_field :status, id:"decesion-schedule-status",class:"date-decesion-vote", value: 0 %>
-            <div class="change-status">
-              <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="date-decesion">決定</h1>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <div id="date-decesion-submit-box">
-      <%= dd.submit "回答",class:"btn-flat-border", id:"date-decesion-submit-inputbox" %>
-    </div>
-  <% end %>
-  <%= form_with url:event_shop_decisions_path(@event.id), local: true do |sd|%>
-    <% @event.shops.each do |st| %>
-      <div class="shop-decesions-box">
-        <div class="shop-decesion-box">
-          <%= st.shop_name %>
-        </div>
-        <div class="shop-decesion-vote-box">
-          <%= sd.hidden_field :schedule_id,class:"decesition-shop-id", value: st.id %>
-          <%= sd.hidden_field :status, id:"decesion-shop-status",class:"shop-decesion-vote", value: 0 %>
-          <div class="shop-change-status">
-            <h1 class="btn btn--orange btn--circle btn--circle-a btn--shadow " id="shop-decesion">決定</h1>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <div id="shop-decesion-submit-box">
-      <%= sd.submit "回答",class:"btn-flat-border", id:"shop-decesion-submit-inputbox" %>
-    </div>
-  <% end %>
-
-
 </div>

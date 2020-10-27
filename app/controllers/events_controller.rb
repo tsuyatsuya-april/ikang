@@ -33,6 +33,7 @@ class EventsController < ApplicationController
     @joins = Join.all
     @shop = Shop.new
     set_date_decision
+    set_shop_decision
     @shops = Shop.find_by(event_id: params[:id])
     if params[:join_id]
       set_join
@@ -96,6 +97,15 @@ class EventsController < ApplicationController
       @date_decision = DateDecision.new
     end
     @schedules = Schedule.where(event_id: params[:id])
+  end
+
+  def set_shop_decision
+    if ShopDecision.find_by(event_id: params[:id])
+      @shop_decision = ShopDecision.find_by(event_id: params[:id])
+    else
+      @shop_decision = ShopDecision.new
+    end
+    @shops_d = Shop.where(event_id: params[:id])
   end
 
   
