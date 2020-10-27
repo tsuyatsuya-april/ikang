@@ -1,18 +1,26 @@
 class DateDecisionsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_event
 
   def create
-    date_decision = DateDecision.create(event_id: params[:event_id], schedule_id: params[:schedule_id], status: 1)
+    @date_decision = DateDecision.new(date_decision_params)
+    @date_decision.save
+    redirect_to event_path(params[:event_id])
   end
 
-  def destroy
-    date_decision = DateDecision.find_by(event_id: params[:event_id], schedule_id: params[:schedule_id], status: 1)
-    date_decision.delete
+  def update
+    @date_decision = DateDecision.find(params[:id])
+    binding.pry
+    @date_decision.update(date_decision_params)
+    redirect_to event_path(params[:event_id])
   end
+
   
   private
   def set_event
     @event = Event.find(params[:event_id])
+  end
+
+  def date_decision_params
+    params.require(:date_decision).permit(:schedule_id, :status).merge(event_id: params[:event_id])
   end
 end

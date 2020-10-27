@@ -32,8 +32,7 @@ class EventsController < ApplicationController
     @comments = Comment.all
     @joins = Join.all
     @shop = Shop.new
-    @date_decesion = DateDecision.new
-    @schedules = Schedule.where(event_id: params[:id])
+    set_date_decision
     @shops = Shop.find_by(event_id: params[:id])
     if params[:join_id]
       set_join
@@ -88,6 +87,15 @@ class EventsController < ApplicationController
     unless user_signed_in?
       redirect_to action: :index
     end
+  end
+
+  def set_date_decision
+    if DateDecision.find_by(event_id: params[:id])
+      @date_decision = DateDecision.find_by(event_id: params[:id])
+    else
+      @date_decision = DateDecision.new
+    end
+    @schedules = Schedule.where(event_id: params[:id])
   end
 
   
