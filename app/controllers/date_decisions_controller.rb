@@ -1,4 +1,5 @@
 class DateDecisionsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update]
   before_action :set_event
 
   def create
@@ -9,7 +10,6 @@ class DateDecisionsController < ApplicationController
 
   def update
     @date_decision = DateDecision.find(params[:id])
-    binding.pry
     @date_decision.update(date_decision_params)
     redirect_to event_path(params[:event_id])
   end
