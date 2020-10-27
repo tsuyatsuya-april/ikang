@@ -6,6 +6,8 @@ class Event < ApplicationRecord
   accepts_nested_attributes_for :shops, allow_destroy: true
   has_many :joins, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :date_decisions
+  has_many :shop_decisions
 
   validates :name, presence: true
 end

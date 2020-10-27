@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   # before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!, only: [:new, :create, :edit,:update, :destroy]
   before_action :set_event, only: [:show,:edit, :update, :destroy]
 
   def index
@@ -26,14 +27,15 @@ class EventsController < ApplicationController
   end
 
   def show
+
     @comment = Comment.new
     @comments = Comment.all
     @joins = Join.all
     @shop = Shop.new
+    set_date_decision
+    @shops = Shop.find_by(event_id: params[:id])
     if params[:join_id]
       set_join
-      @shops = Shop.all
-      @schedules = Schedule.all
     else
       @join = Join.new
       1.times { @join.date_answers.build }
@@ -62,6 +64,7 @@ class EventsController < ApplicationController
     end
   end
 
+
   private 
 
   def event_params
@@ -85,4 +88,15 @@ class EventsController < ApplicationController
       redirect_to action: :index
     end
   end
+
+  def set_date_decision
+    if DateDecision.find_by(event_id: params[:id])
+      @date_decision = DateDecision.find_by(event_id: params[:id])
+    else
+      @date_decision = DateDecision.new
+    end
+    @schedules = Schedule.where(event_id: params[:id])
+  end
+
+  
 end

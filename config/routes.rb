@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :shops
     resources :joins
     resources :comments
+    resources :date_decisions
+    resources :shop_decisions
   end
 end
