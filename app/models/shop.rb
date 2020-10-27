@@ -5,4 +5,6 @@ class Shop < ApplicationRecord
   has_many :shop_decisions
 
   validates :shop_name, presence: true
+
+  
 end

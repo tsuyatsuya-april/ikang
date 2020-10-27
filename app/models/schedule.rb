@@ -5,4 +5,8 @@ class Schedule < ApplicationRecord
   has_many :date_decisions
 
   validates :savedate, presence: true
+
+  def date_time
+    self.savedate.to_s.slice(5,2)+ "月" + self.savedate.to_s.slice(8, 2) + "日：" + self.savetime.to_s + "~"
+  end
 end

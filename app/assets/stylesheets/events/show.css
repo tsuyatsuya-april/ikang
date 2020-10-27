@@ -592,3 +592,14 @@ h1{
   display: flex;
 }
 
+.date-decesion-explain{
+  font-size:14px;
+}
+.date-decesion-box{
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+#date-decesion-select{
+  height: 28px;
+}

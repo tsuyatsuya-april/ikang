@@ -27,14 +27,16 @@ class EventsController < ApplicationController
   end
 
   def show
+
     @comment = Comment.new
     @comments = Comment.all
     @joins = Join.all
     @shop = Shop.new
+    @date_decesion = DateDecision.new
+    @schedules = Schedule.where(event_id: params[:id])
+    @shops = Shop.find_by(event_id: params[:id])
     if params[:join_id]
       set_join
-      @shops = Shop.all
-      @schedules = Schedule.all
     else
       @join = Join.new
       1.times { @join.date_answers.build }
