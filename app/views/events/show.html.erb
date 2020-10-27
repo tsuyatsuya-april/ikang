@@ -38,25 +38,27 @@
       </div>
     </div>
     <hr>
-    <% if @event.date_decisions.find_by(status: 1) %>
-      <%= form_with model: @date_decision,url:event_date_decision_path(@event.id, @date_decision.id), id:"date-decesion-form", local: true do |dd|%>
-        <div class="date-decesion-explain">変更したい日程を選択して更新をお願いします。</div>
-        <div class="date-decesion-box">
-          <%= dd.hidden_field :id %>
-          <%= dd.hidden_field :event_id %>
-          <%= dd.collection_select(:schedule_id, @schedules, :id,:date_time,{},{class:"select-box", id:"date-decesion-select"}) %>
-          <%= dd.hidden_field :status, value:1 %>
-          <%= dd.submit "イベント日程更新" ,class:"buy-red-btn", id:"date-decesion-submit"%>
-        </div>
-      <% end %>
-    <% else %>
-      <%= form_with model: @date_decision,url:event_date_decisions_path(@event.id),id:"date-decesion-form", local: true do |dd|%>
-        <div class="date-decesion-explain">日程が決定した場合にボタンをクリックお願いします</div>
-        <div class="date-decesion-box">
-          <%= dd.collection_select(:schedule_id, @schedules, :id,:date_time,{},{class:"select-box", id:"date-decesion-select"}) %>
-          <%= dd.hidden_field :status, value:1 %>
-          <%= dd.submit "イベント開催日決定" ,class:"buy-red-btn", id:"date-decesion-submit"%>
-        </div>
+    <% if user_signed_in? %>
+      <% if @event.date_decisions.find_by(status: 1) %>
+        <%= form_with model: @date_decision,url:event_date_decision_path(@event.id, @date_decision.id), id:"date-decesion-form", local: true do |dd|%>
+          <div class="date-decesion-explain">変更したい日程を選択して更新をお願いします。</div>
+          <div class="date-decesion-box">
+            <%= dd.hidden_field :id %>
+            <%= dd.hidden_field :event_id %>
+            <%= dd.collection_select(:schedule_id, @schedules, :id,:date_time,{},{class:"select-box", id:"date-decesion-select"}) %>
+            <%= dd.hidden_field :status, value:1 %>
+            <%= dd.submit "イベント日程更新" ,class:"buy-red-btn", id:"date-decesion-submit"%>
+          </div>
+        <% end %>
+      <% else %>
+        <%= form_with model: @date_decision,url:event_date_decisions_path(@event.id),id:"date-decesion-form", local: true do |dd|%>
+          <div class="date-decesion-explain">日程が決定した場合にボタンをクリックお願いします</div>
+          <div class="date-decesion-box">
+            <%= dd.collection_select(:schedule_id, @schedules, :id,:date_time,{},{class:"select-box", id:"date-decesion-select"}) %>
+            <%= dd.hidden_field :status, value:1 %>
+            <%= dd.submit "イベント開催日決定" ,class:"buy-red-btn", id:"date-decesion-submit"%>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
     <table id="date-table">
@@ -139,25 +141,27 @@
     <br>
     <hr>
     <br>
-    <% if @event.shop_decisions.find_by(status: 1) %>
-      <%= form_with model: @shop_decision,url:event_shop_decision_path(@event.id, @shop_decision.id), id:"shop-decesion-form", local: true do |sd|%>
-        <div class="shop-decesion-explain">変更したいお店を選択して更新をお願いします。</div>
-        <div class="shop-decesion-box">
-          <%= sd.hidden_field :id %>
-          <%= sd.hidden_field :event_id %>
-          <%= sd.collection_select(:shop_id, @shops_d, :id,:shop_name,{},{class:"select-box", id:"shop-decesion-select"}) %>
-          <%= sd.hidden_field :status, value:1 %>
-          <%= sd.submit "イベント場所更新" ,class:"buy-red-btn", id:"shop-decesion-submit"%>
-        </div>
-      <% end %>
-    <% else %>
-      <%= form_with model: @shop_decision,url:event_shop_decisions_path(@event.id),id:"shop-decesion-form", local: true do |sd|%>
-        <div class="shop-decesion-explain">お店が決定した場合にボタンをクリックお願いします</div>
-        <div class="shop-decesion-box">
-          <%= sd.collection_select(:shop_id, @shops_d, :id,:shop_name,{},{class:"select-box", id:"date-decesion-select"}) %>
-          <%= sd.hidden_field :status, value:1 %>
-          <%= sd.submit "イベント場所決定" ,class:"buy-red-btn", id:"shop-decesion-submit"%>
-        </div>
+    <% if user_signed_in? %>
+      <% if @event.shop_decisions.find_by(status: 1) %>
+        <%= form_with model: @shop_decision,url:event_shop_decision_path(@event.id, @shop_decision.id), id:"shop-decesion-form", local: true do |sd|%>
+          <div class="shop-decesion-explain">変更したいお店を選択して更新をお願いします。</div>
+          <div class="shop-decesion-box">
+            <%= sd.hidden_field :id %>
+            <%= sd.hidden_field :event_id %>
+            <%= sd.collection_select(:shop_id, @shops_d, :id,:shop_name,{},{class:"select-box", id:"shop-decesion-select"}) %>
+            <%= sd.hidden_field :status, value:1 %>
+            <%= sd.submit "イベント場所更新" ,class:"buy-red-btn", id:"shop-decesion-submit"%>
+          </div>
+        <% end %>
+      <% else %>
+        <%= form_with model: @shop_decision,url:event_shop_decisions_path(@event.id),id:"shop-decesion-form", local: true do |sd|%>
+          <div class="shop-decesion-explain">お店が決定した場合にボタンをクリックお願いします</div>
+          <div class="shop-decesion-box">
+            <%= sd.collection_select(:shop_id, @shops_d, :id,:shop_name,{},{class:"select-box", id:"date-decesion-select"}) %>
+            <%= sd.hidden_field :status, value:1 %>
+            <%= sd.submit "イベント場所決定" ,class:"buy-red-btn", id:"shop-decesion-submit"%>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
     <table id="shop-table">

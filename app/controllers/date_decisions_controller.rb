@@ -1,4 +1,5 @@
 class DateDecisionsController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :update]
   before_action :set_event
 
   def create

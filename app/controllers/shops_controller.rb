@@ -1,8 +1,9 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_user!, only: :destroy
+  
   def create
     @event = Event.find(params[:event_id])
     @shop= Shop.new(shop_params)
-    binding.pry
     if @shop.save
       @event.joins.map do |join|
         @shop_answer = ShopAnswer.new(shop_id: @shop.id, join_id: join.id, status: "3", vote: "0")
