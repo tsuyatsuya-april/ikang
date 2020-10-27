@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-
+  before_action :authenticate_user!, only: [:create, :destroy]
   def create
     @event = Event.find(params[:event_id])
     @schedule = Schedule.new(schedule_params)
