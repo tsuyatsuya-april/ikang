@@ -462,8 +462,8 @@
                 <%= shop.text_field :shop_url, id:"show-shop-url",class:"show-shop-input" %>
               </div>
               <div>
-                <div class="show-shop-label">地図のURL(任意）</div>
-                <%= shop.text_field :map_url, id:"show-map_url",class:"show-shop-input" %>
+                <%# <div class="show-shop-label">地図のURL(任意）</div> %>
+                <%= shop.hidden_field :map_url, id:"show-map_url",class:"show-shop-input" %>
               </div>
               <div class="show-shop-end">
                 <div class="show-shop-label">コメント(任意）</div>
@@ -552,7 +552,7 @@
               </div>
               <div class="store">
                 <div class="decision-store-text eng">
-                  URL
+                  店のURL
                 </div>
                 <div class="decision-store-url decision-inner">
                   <%= link_to @store_decision.shop_url %>
@@ -560,15 +560,7 @@
               </div>
               <div class="store">
                 <div class="decision-store-text eng">
-                  地図 
-                </div>
-                <div class="decision-store-map">
-                  <%= @store_decision.map_url %>
-                </div>
-              </div>
-              <div class="store">
-                <div class="decision-store-text eng">
-                  コメント 
+                  店に関してコメント 
                 </div>
                 <div class="decision-store-comment decision-area">
                   <%= @store_decision.comment %>
