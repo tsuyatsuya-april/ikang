@@ -80,7 +80,27 @@ h1{
   font-size: 25px;
   text-align: center;
 }
-
+.event-show-decision-btn{
+  cursor: pointer;
+  width: 160px;
+  text-align: center;
+  margin: 1px 0 16px;
+  display: inline-block;
+  padding: 0.9em 1em;
+  text-decoration: none;
+  color: white;
+  border: solid 2px #fc8c8c;
+  border-radius: 3px;
+  transition: .4s;
+  text-align: center;
+  height: 30px;
+  font-size: 20px;
+  background: #f89999;
+}
+.event-show-decision-btn:hover{
+  background:#ff0202;
+  color: white;
+}
 #open, #edit-open,.event-show-add-shop{
   cursor: pointer;
   width: 160px;
