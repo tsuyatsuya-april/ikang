@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :comment do
-    context { "これはテストコメントです" }
+    content { "これはテストコメントです" }
     association :event
   end
 end
