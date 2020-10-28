@@ -519,63 +519,65 @@
       </div>
       <div id="decision-main-box">
         <div id="decision-title">
-          <span id="decision-text"><%= @event.name %>決定内容</span>
+          <span id="decision-text"><<%= @event.name %>決定内容></span>
         </div>
-        <div class="show-event-description-box">
-            <div class="show-event-description">詳細 </div>
-            <div class="show-event-description-detail"><%= @event.description %></div>
+        <div id="decision-sub-box">
+          <div class="show-event-description-box">
+              <div class="show-event-description">詳細 </div>
+              <div class="show-event-description-detail"><%= @event.description %></div>
+            </div>
+          <div id="decision-date-context">
+            <% if @event.date_decision %>
+              <div>
+                <div class="decision-savedate">
+                  開催日時
+                </div>
+                <div class="decision-savedate decision-inner">
+                  <%= @schedule_decision.date_time %> 
+                </div>
+              </div>
+            <% else %>
+              <div class="unknown">※日程は未定です。確定までお待ち下さい。</div>
+            <% end %>
           </div>
-        <div id="decision-date-context">
-          <% if @event.date_decision %>
-            <div>
-              <span class="decision-savedate">
-                開催日時： 
-              </span>
-              <span class="decision-savedate">
-                <%= @schedule_decision.date_time %> 
-              </span>
-            </div>
-          <% else %>
-            <div class="unknown">日程はまだ決まっておりません</div>
-          <% end %>
-        </div>
-        <div id="decision-shop-context">
-          <% if @event.shop_decision %>
-            <div class="store">
-              <span class="decision-store-text">
-                店名（場所）： 
-              </span>
-              <span class="decision-store-name">
-                <%= @store_decision.shop_name %>
-              </span>
-            </div>
-            <div class="store">
-              <span class="decision-store-text eng">
-                URL： 
-              </span>
-              <span class="decision-store-url">
-                <%= link_to @store_decision.shop_url %>
-              </span>
-            </div>
-            <div class="store">
-              <div class="decision-store-text eng">
-                地図： 
+          <div id="decision-shop-context">
+            <% if @event.shop_decision %>
+              <div>
+                <div class="decision-store-text">
+                  店名（場所)
+                </div>
+                <div class="decision-store-name decision-inner">
+                  <%= @store_decision.shop_name %>
+                </div>
               </div>
-              <div class="decision-store-map">
-                <%= @store_decision.map_url %>
+              <div class="store">
+                <div class="decision-store-text eng">
+                  URL
+                </div>
+                <div class="decision-store-url decision-inner">
+                  <%= link_to @store_decision.shop_url %>
+                </div>
               </div>
-            </div>
-            <div class="store">
-              <div class="decision-store-text eng">
-                コメント： 
+              <div class="store">
+                <div class="decision-store-text eng">
+                  地図 
+                </div>
+                <div class="decision-store-map">
+                  <%= @store_decision.map_url %>
+                </div>
               </div>
-              <div class="decision-store-map">
-                <%= @store_decision.comment %>
+              <div class="store">
+                <div class="decision-store-text eng">
+                  コメント 
+                </div>
+                <div class="decision-store-comment decision-area">
+                  <%= @store_decision.comment %>
+                </div>
               </div>
-            </div>
-          <% else %>
-            <div class="unknown">お店はまだ決まっておりません</div>
-          <% end %>
+            <% else %>
+              <div class="unknown">※お店は未定です。確定までお待ち下さい。</div>
+            <% end %>
+          </div>
         </div>
       </div>
     </section>

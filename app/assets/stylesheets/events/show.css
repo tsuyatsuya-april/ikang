@@ -603,3 +603,53 @@ h1{
 #date-decesion-select,#shop-decesion-select{
   height: 28px;
 }
+
+#decision-main-box{
+  width: 90%;
+  margin: 10px 30px;
+  background-color: rgb(243, 210, 236);
+  padding: 20px 10px;
+  height: 100%;
+}
+
+#decision-text{
+  font-size: 20px;
+}
+
+#decision-sub-box{
+  margin-left: 16px;
+}
+
+.decision-inner{
+  width: 595px;
+  background-color: white;
+  height: 20px;
+  font-size: 16px;
+  border: 1px solid lightslategray; 
+  padding: 5px 0 0 5px;
+  margin-top: 5px;
+}
+
+.unknown{
+  font-size: 16px;
+  color: red;
+  margin: 50px 0;
+}
+
+#decision-shop-context, .store{
+  margin-top: 15px;
+}
+
+.decision-area{
+  width: 595px;
+  background-color: white;
+  height: 20px;
+  font-size: 16px;
+  border: 1px solid lightslategray; 
+  padding: 5px 0 0 5px;
+  margin-top: 5px;
+}
+
+#decision-title{
+  margin-bottom: 20px;
+}
