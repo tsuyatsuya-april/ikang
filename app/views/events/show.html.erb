@@ -3,7 +3,7 @@
   <h3 class="event-title"><%= @event.name %></h1>
   <div class="middle-show-box">
      <div class="event-show-btns">
-      <% if @event.date_decisions.find_by(status: 1) || @event.date_decisions.find_by(status: 1) %>
+      <% if @event.date_decision || @event.shop_decision %>
         <div class="event-show-add-shop" id="event-decisions">
           <h1>イベント確定事項</h1>
         </div>
@@ -39,7 +39,7 @@
     </div>
     <hr>
     <% if user_signed_in? %>
-      <% if @event.date_decisions.find_by(status: 1) %>
+      <% if @event.date_decision %>
         <%= form_with model: @date_decision,url:event_date_decision_path(@event.id, @date_decision.id), id:"date-decesion-form", local: true do |dd|%>
           <div class="date-decesion-explain">変更したい日程を選択して更新をお願いします。</div>
           <div class="date-decesion-box">
@@ -142,7 +142,7 @@
     <hr>
     <br>
     <% if user_signed_in? %>
-      <% if @event.shop_decisions.find_by(status: 1) %>
+      <% if @event.shop_decision %>
         <%= form_with model: @shop_decision,url:event_shop_decision_path(@event.id, @shop_decision.id), id:"shop-decesion-form", local: true do |sd|%>
           <div class="shop-decesion-explain">変更したいお店を選択して更新をお願いします。</div>
           <div class="shop-decesion-box">
@@ -511,5 +511,67 @@
         </div>
       </div>
     <% end %>
+  </div>
+
+  <div id="decision-main-box">
+    <div id="decision-title">
+      <span id="decision-text"><%= @event.name %>決定内容</span>
+    </div>
+    <div class="show-event-description-box">
+        <div class="show-event-description">詳細 </div>
+        <div class="show-event-description-detail"><%= @event.description %></div>
+      </div>
+    <div id="decision-date-context">
+      <% if @event.date_decision %>
+        <div>
+          <span class="decision-savedate">
+            開催日時： 
+          </span>
+          <span class="decision-savedate">
+            <%= @schedule_decision.date_time %> 
+          </span>
+        </div>
+      <% else %>
+        <div class="unknown">日程はまだ決まっておりません</div>
+      <% end %>
+    </div>
+    <div id="decision-shop-context">
+      <% if @event.shop_decision %>
+        <div class="store">
+          <span class="decision-store-text">
+            店名（場所）： 
+          </span>
+          <span class="decision-store-name">
+            <%= @store_decision.shop_name %>
+          </span>
+        </div>
+        <div class="store">
+          <span class="decision-store-text eng">
+            URL： 
+          </span>
+          <span class="decision-store-url">
+            <%= link_to @store_decision.shop_url %>
+          </span>
+        </div>
+        <div class="store">
+          <div class="decision-store-text eng">
+            地図： 
+          </div>
+          <div class="decision-store-map">
+            <%= @store_decision.map_url %>
+          </div>
+        </div>
+        <div class="store">
+          <div class="decision-store-text eng">
+            コメント： 
+          </div>
+          <div class="decision-store-map">
+            <%= @store_decision.comment %>
+          </div>
+        </div>
+      <% else %>
+        <div class="unknown">お店はまだ決まっておりません</div>
+      <% end %>
+    </div>
   </div>
 </div>

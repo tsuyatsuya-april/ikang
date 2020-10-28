@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  # before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show]
   before_action :authenticate_user!, only: [:new, :create, :edit,:update, :destroy]
   before_action :set_event, only: [:show,:edit, :update, :destroy]
 
@@ -93,6 +93,7 @@ class EventsController < ApplicationController
   def set_date_decision
     if DateDecision.find_by(event_id: params[:id])
       @date_decision = DateDecision.find_by(event_id: params[:id])
+      @schedule_decision = Schedule.find(@date_decision.schedule_id)
     else
       @date_decision = DateDecision.new
     end
@@ -102,6 +103,7 @@ class EventsController < ApplicationController
   def set_shop_decision
     if ShopDecision.find_by(event_id: params[:id])
       @shop_decision = ShopDecision.find_by(event_id: params[:id])
+      @store_decision = Shop.find(@shop_decision.shop_id)
     else
       @shop_decision = ShopDecision.new
     end
