@@ -80,7 +80,27 @@ h1{
   font-size: 25px;
   text-align: center;
 }
-
+.event-show-decision-btn{
+  cursor: pointer;
+  width: 160px;
+  text-align: center;
+  margin: 1px 0 16px;
+  display: inline-block;
+  padding: 0.9em 1em;
+  text-decoration: none;
+  color: white;
+  border: solid 2px #fc8c8c;
+  border-radius: 3px;
+  transition: .4s;
+  text-align: center;
+  height: 30px;
+  font-size: 20px;
+  background: #f89999;
+}
+.event-show-decision-btn:hover{
+  background:#ff0202;
+  color: white;
+}
 #open, #edit-open,.event-show-add-shop{
   cursor: pointer;
   width: 160px;
@@ -103,7 +123,7 @@ h1{
   background:#ff00f2;
   color: white;
 }
-#close, #edit-close, #shop-close{
+#close, #edit-close, #shop-close, #decision-close{
   cursor: pointer;
   width: 100px;
   border: 1px solid #ccc;
@@ -114,7 +134,7 @@ h1{
   text-decoration: none;
 }
 
-#mask, #edit-mask, #shop-mask {
+#mask, #edit-mask, #shop-mask, #decision-mask {
   background: rgba(0,0,0,0.4);
   position: fixed;
   top: 0;
@@ -124,7 +144,7 @@ h1{
   z-index: 1;
 }
 
-#modal, #edit-modal, #shop-modal{
+#modal, #edit-modal, #shop-modal, #decision-modal{
   background: #fff;
   width: 700px;
   padding: 20px;
@@ -141,11 +161,11 @@ h1{
   margin: 0 0 20px;
 }
 
-#mask.hidden, #edit-mask.hidden, #shop-mask.hidden{
+#mask.hidden, #edit-mask.hidden, #shop-mask.hidden, #decision-mask.hidden{
   display: none;
 }
 
-#modal.hidden, #edit-modal.hidden, #shop-modal.hidden{
+#modal.hidden, #edit-modal.hidden, #shop-modal.hidden, #decision-modal.hidden{
   transform: translate(0, -500px);
 }
 
@@ -602,4 +622,54 @@ h1{
 
 #date-decesion-select,#shop-decesion-select{
   height: 28px;
+}
+
+#decision-main-box{
+  width: 90%;
+  margin: 10px 30px;
+  background-color: rgb(243, 210, 236);
+  padding: 20px 10px;
+  height: 400px;
+}
+
+#decision-text{
+  font-size: 20px;
+}
+
+#decision-sub-box{
+  margin-left: 16px;
+}
+
+.decision-inner{
+  width: 595px;
+  background-color: white;
+  height: 20px;
+  font-size: 16px;
+  border: 1px solid lightslategray; 
+  padding: 5px 0 0 5px;
+  margin-top: 5px;
+}
+
+.unknown{
+  font-size: 16px;
+  color: red;
+  margin: 50px 0;
+}
+
+#decision-shop-context, .store{
+  margin-top: 15px;
+}
+
+.decision-area{
+  width: 595px;
+  background-color: white;
+  height: 20px;
+  font-size: 16px;
+  border: 1px solid lightslategray; 
+  padding: 5px 0 0 5px;
+  margin-top: 5px;
+}
+
+#decision-title{
+  margin-bottom: 20px;
 }

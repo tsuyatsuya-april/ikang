@@ -24,6 +24,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     } else {
       modalAddJoin();
       modalAddShop();
+      modalShowDecision();
     }
     
     
@@ -218,6 +219,23 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     const close = document.getElementById("shop-close");
     const modal = document.getElementById("shop-modal");
     const mask = document.getElementById("shop-mask");
+
+    open.onclick = function(){
+      modal.classList.remove("hidden");
+      mask.classList.remove("hidden");
+    };
+
+    close.onclick = function(){
+      modal.classList.add("hidden");
+      mask.classList.add("hidden");
+    };
+  }
+  //モーダルウィンドウで決定事項フォームを出力する
+  function modalShowDecision(){
+    const open = document.getElementById("decision-open");
+    const close = document.getElementById("decision-close");
+    const modal = document.getElementById("decision-modal");
+    const mask = document.getElementById("decision-mask");
 
     open.onclick = function(){
       modal.classList.remove("hidden");

@@ -108,8 +108,8 @@
                 <%= shop_fields.text_field :shop_url, class:"shop-url-input"%>
               </div>
               <div id="shop-map-box">
-                <div id="shop-map"><p>地図のURL(任意)</p></div>
-                <%= shop_fields.text_field :map_url, class:"shop-map-input"%>
+                <%# <div id="shop-map"><p>地図のURL(任意)</p></div> %>
+                <%= shop_fields.hidden_field :map_url, class:"shop-map-input"%>
               </div>
               <div id="shop-comment-box">
                 <div id="shop-comment"><p>コメント(任意)</p></div>
