@@ -1,20 +1,21 @@
 <div class="contents-in row">
   <div class="container-in">
     <h2 class="log-in">ログイン</h2>
-
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
       <div class="field">
         <%= f.label "Eメール",class:"field-form" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"field-form" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"field-form", id:"login-email" %>
       </div>
 
       <div class="field">
         <%= f.label "パスワード",class:"field-form" %><br />
-        <%= f.password_field :password, autocomplete: "current-password",class:"field-form" %>
+        <%= f.password_field :password, autocomplete: "current-password",class:"field-form",id:"login-password" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "ログイン",class:"btn-flat-border-sign-up" %>
+        <%= f.submit "ログイン",class:"btn-flat-border-sign-up",id:"login-submit" %>
+        <div class="btn-flat-border-gest-sign-up", id="gest-login">ゲストログイン</div>
       </div>
     <% end %>
   </div>

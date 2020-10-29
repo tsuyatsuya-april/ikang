@@ -11,6 +11,7 @@ require("../main")
 require("../main_edit")
 require("../join")
 require("../comment")
+require("../login")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
