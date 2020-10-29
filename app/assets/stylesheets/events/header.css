@@ -11,10 +11,11 @@
   margin-left: 20px;
 }
 #title-main{
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   color: rgb(247, 70, 232);
   cursor: pointer;
+  transform   : skewY(-4deg); 
 }
 .header-link{
   text-decoration: none;
@@ -35,5 +36,14 @@
   margin-right: 20px;
   font-size: 15px;
   display: flex;
-  
+  gap: 24px;
+}
+.grid-7{
+  display: flex;
+  gap: 10px;
+}
+
+#sub-title-main{
+  padding-top: 18px;
+  transform   : skewY(-4deg); 
 }
