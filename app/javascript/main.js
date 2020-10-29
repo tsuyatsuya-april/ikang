@@ -289,8 +289,7 @@ if(path === "/events/new" || path === "/events"
               <input class="shop-url-input" type="text" name="event[shops_attributes][${nextNum}][shop_url]" id="event_shops_attributes_${nextNum}_shop_url">
             </div>
             <div id="shop-map-box">
-              <div id="shop-map"><p>地図のURL(任意)</p></div>
-              <input class="shop-map-input" type="text" name="event[shops_attributes][${nextNum}][map_url]" id="event_shops_attributes_${nextNum}_map_url">
+              <input class="shop-map-input" type="hidden" name="event[shops_attributes][${nextNum}][map_url]" id="event_shops_attributes_${nextNum}_map_url">
             </div>
             <div id="shop-comment-box">
               <div id="shop-comment"><p>コメント(任意)</p></div>
