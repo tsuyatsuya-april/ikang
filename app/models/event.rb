@@ -10,4 +10,6 @@ class Event < ApplicationRecord
   has_one :shop_decision
 
   validates :name, presence: true
+  validates :description, presence: true
+
 end
