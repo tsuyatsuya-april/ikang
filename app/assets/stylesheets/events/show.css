@@ -673,3 +673,8 @@ h1{
 #decision-title{
   margin-bottom: 20px;
 }
+
+.circle-text{
+  font-size: 14px;
+  margin: 5px 0;
+}

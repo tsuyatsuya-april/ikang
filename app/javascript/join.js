@@ -5,8 +5,8 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     manySaveOk();
     DateStatusValue();
     shopStatusValue();
-    CountDateStatus();
-    CountShopStatus();
+    // CountDateStatus();
+    // CountShopStatus();
     noOneDirection();
     urlCopy();
     //Count系のメソッドでまるばつサンカクを集計した後にexpect系メソッドで集計後の◯の最高値に対して背景色をつける
