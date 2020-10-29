@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def show
 
     @comment = Comment.new
-    @comments = Comment.all
+    @comments = Comment.where(event_id: params[:id])
     @joins = Join.all
     @shop = Shop.new
     set_date_decision
