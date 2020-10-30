@@ -4,14 +4,12 @@ class ShopDecisionsController < ApplicationController
 
   def create
     @shop_decision = ShopDecision.new(shop_decision_params)
-    binding.pry
     @shop_decision.save
     redirect_to event_path(params[:event_id])
   end
 
   def update
     @shop_decision = ShopDecision.find(params[:id])
-    binding.pry
     @shop_decision.update(shop_decision_params)
     redirect_to event_path(params[:event_id])
   end
