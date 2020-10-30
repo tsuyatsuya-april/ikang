@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show,:edit, :update, :destroy]
 
   def index
+    @user = User.new
     if user_signed_in?
       user = User.find(current_user.id)
       @events = user.events.reverse

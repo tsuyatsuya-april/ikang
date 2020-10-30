@@ -9,4 +9,9 @@ class User < ApplicationRecord
     validates :name
   end
 
+  def self.guest
+    find_or_create_by!(email: 'test@gmail.com') do |user|
+      user.password = "testtest"
+    end
+  end
 end
