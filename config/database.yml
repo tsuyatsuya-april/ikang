@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: ikang_production
-  username: ikang
-  password: <%= ENV['IKANG_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
