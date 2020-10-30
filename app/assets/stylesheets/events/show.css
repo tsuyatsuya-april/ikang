@@ -392,6 +392,7 @@ h1{
   padding-right: 80px;
   margin-top: 5px;
   margin-bottom: 10px;
+  gap: 20px;
 }
 
 .btn-flat-border-sign-up{
@@ -402,7 +403,7 @@ h1{
   border: solid 2px #67c2ff;
   border-radius: 3px;
   transition: .4s;
-  width: 300px;
+  width: 200px;
   text-align: center;
   height: 50px;
   padding-top: 7px;
@@ -411,8 +412,29 @@ h1{
   cursor: pointer;
   font-size: 18px;
 }
+.btn-flat-border-gest-sign-up{
+  display: inline-block;
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  color: white;
+  border: solid 2px #67c2ff;
+  border-radius: 3px;
+  transition: .4s;
+  width: 200px;
+  text-align: center;
+  height: 25px;
+  padding-top: 15px;
+  margin-top: 18px;
+  background-color: #84cbfa;
+  cursor: pointer;
+  font-size: 18px;
+}
 
 .btn-flat-border-sign-up:hover{
+  background: #0e9af8;
+  color: white;
+}
+.btn-flat-border-gest-sign-up:hover{
   background: #0e9af8;
   color: white;
 }
@@ -672,4 +694,9 @@ h1{
 
 #decision-title{
   margin-bottom: 20px;
+}
+
+.circle-text{
+  font-size: 14px;
+  margin: 5px 0;
 }

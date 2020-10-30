@@ -107,13 +107,13 @@
             <%= @event.joins.length %>
           </td>
           <td class="sum-maru">
-            
+            <%= et.date_answer.where(status: 1).length %>
           </td>
           <td class="sum-delta">
-            
+            <%= et.date_answer.where(status: 2).length %>
           </td>
           <td class="sum-cross">
-            
+            <%= et.date_answer.where(status: 3).length %>
           </td>
           <% if et.date_answer %>
             <% et.date_answer.each do |da| %>
@@ -213,10 +213,13 @@
             <%= @event.joins.length %>
           </td>
           <td class="sum-maru">
+            <%= es.shop_answer.where(status: 1).length %>
           </td>
           <td class="sum-delta">
+            <%= es.shop_answer.where(status: 2).length %>
           </td>
           <td class="sum-cross">
+            <%= es.shop_answer.where(status: 3).length %>
           </td>
           <% if es.shop_answer %>
             <% es.shop_answer.each do |sa| %>
@@ -271,6 +274,7 @@
               </div>
               <div id="date-answer-box">
                 <h1 id="date-answer-title">日程選択</h1>
+                <div class="circle-text">説明： 現時点で参加可能な日程を◯×△で回答下さい</div>
                 <table id="date-answer-table">
                   <tbody>
                     <% @event.schedules.each do |et| %>
@@ -303,6 +307,7 @@
               </div>
               <div id="shop-answer">
                 <h1 id="shop-answer-title">店舗選択</h1>
+                <div class="circle-text">説明： お店を◯×△で評価,一番良いと思う店に一番ボタンで投票下さい</div>
                 <table id="shop-answer-table">
                   <tbody> 
                     <% @event.shops.each do |es| %>
@@ -385,6 +390,7 @@
                 </div>
                 <div id="date-edit-answer-box">
                   <h1 id="date-edit-answer-title">日程選択</h1>
+                  <div class="circle-text">説明： 参加可能な日程を◯×△で変更下さい</div>
                   <table id="date-edit-answer-table">
                     <tbody>
                       <%= f.fields_for :date_answers, @join.date_answers do |date_edit_fields| %>  
@@ -409,6 +415,7 @@
                 </div>
                 <div id="shop-answer">
                   <h1 id="shop-answer-title">店舗選択</h1>
+                  <div class="circle-text">説明： ◯×△の評価,一番の投票を変更下さい</div>
                   <table id="shop-answer-table">
                     <tbody> 
                       <%= f.fields_for :shop_answers, @join.shop_answers do |shop_edit_fields| %>
