@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  background: rgb(247, 241, 245);
+  background: #F3D8E8;
   padding-left: 10px;
 }
 
@@ -48,18 +48,18 @@
 
 h1.btn--orange {
   background: #ffffff;
-  color: #eb6100;
+  color: #BC438A;
   
 }
 
 h1.btn--orange:hover {
   color: #fff;
-  background-color: #eb6100;
+  background-color: #BC438A;
 }
 
 h1.choice {
   color: #fff;
-  background-color: #eb6100;
+  background-color: #BC438A;
 }
 
 h1.btn--shadow {
@@ -176,7 +176,7 @@ h1{
 .index-status-form{
   font-size: 25px;
   font-weight: 900;
-  color: #eb6100;
+  color: #BC438A;
 }
 
 .cross{
@@ -194,7 +194,7 @@ h1{
   text-align: left;
 }
 .event-show-data{
-  background-color: lightskyblue;
+  background-color: #D88DB9;
 }
 .event-join-user-name{
   width: 90px;
