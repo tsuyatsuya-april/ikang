@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  background-color: rgb(244, 238, 245);
+  background-color: #F3D8E8;
 }
 .event-title{
   margin-top: 10px;
@@ -91,14 +91,14 @@
   display: inline-block;
   padding: 0.3em 1em;
   text-decoration: none;
-  color: #67c5ff;
-  border: solid 2px #67c5ff;
+  color: #D88DB9;
+  border: solid 2px #CA68A1;
   border-radius: 3px;
   transition: .4s;
 }
 
 .btn-flat-border:hover {
-  background: #67c5ff;
+  background:#BC438A;
   color: white;
 }
 .btn-flat-border-red {
@@ -183,7 +183,7 @@
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 30px;
-  background-color: blue;
+  background-color: #BC438A;
   color: white;
   width: 400px;
   height: 60px;
