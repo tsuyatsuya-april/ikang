@@ -15,7 +15,7 @@ if(path.length >= 8 && path.slice(0,7) === "/events"){
     expectShop();
     expectVote();
     if(query.includes("join_id")){
-      transEditLabel();
+      // transEditLabel();
       shopEditStatusValue();
       DateEditStatusValue();
       modalCloseJoin();

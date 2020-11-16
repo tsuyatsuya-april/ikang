@@ -196,10 +196,10 @@
         <tr>
           <th class="shop-lists">
             <div>
-              <span id="pass-shop-name">店名/<%= es.shop_name %></span>
-            </div>
-            <div>
-              <span id="pass-shop-url">URL/<%= es.shop_url %></span>
+              
+              <span id="pass-shop-name">
+                店名/<%= link_to es.shop_name, es.shop_url, target: :_blank %>
+              </span>
             </div>
             <%# <div>
               <span id="pass-map-url">地図のURL/<%= es.map_url %>
@@ -281,14 +281,7 @@
                       <%= f.fields_for :date_answers do |date_fields| %>  
                         <tr class="bottom-line">
                           <th id="join-schedules">
-                            <% answerdate = et.savedate.to_s %>
-                            <span id="pass-savedate">
-                              <%= answerdate[5,2] %>月<%= answerdate[8,2] %>日
-                            </span>
-                            <% answertime = et.savetime.to_s%>
-                            <span id="pass-savetime">
-                              <%= answertime[0,2] %>:<%= answertime[3,2] %>~
-                            </span>
+                            <%= et.date_time %>
                           </th>
                           <td class="schedule-vote-box">
                             <%= date_fields.hidden_field :schedule_id,class:"schedule-id", value: et.id %>
@@ -315,10 +308,7 @@
                         <tr id="join-shops" class="bottom-line">
                           <th class="shop-label">
                             <div>
-                              <%= es.shop_name %>
-                            </div>
-                            <div class="show-url">
-                              URL:<%= es.shop_url %>
+                              <%= link_to es.shop_name, es.shop_url, target: :_blank %>
                             </div>
                           </th>
                           <td class="shop-vote-balance">
@@ -394,9 +384,11 @@
                   <table id="date-edit-answer-table">
                     <tbody>
                       <%= f.fields_for :date_answers, @join.date_answers do |date_edit_fields| %>  
+                        <% dnum = date_edit_fields.object.schedule_id%>
+                        <% dn = Schedule.find(dnum) %>
                         <tr >
                           <th id="join-edit-schedules">
-                            <span id="trans-savedate"></span><br><span id="trans-savetime"></span>
+                            <%= dn.date_time %>
                           </th>  
                           <td class="schedule-vote-box">
                             <%= date_edit_fields.hidden_field :id,class:"date-answers-id" %>
@@ -419,10 +411,11 @@
                   <table id="shop-answer-table">
                     <tbody> 
                       <%= f.fields_for :shop_answers, @join.shop_answers do |shop_edit_fields| %>
+                        <% snum = shop_edit_fields.object.shop_id%>
+                        <% sn = Shop.find(snum) %>
                         <tr id="join-shops">
                           <th class="shop-label">
-                            <span id="trans-shop-name"></span><br>
-                            <span id="trans-shop-url"></span>
+                            <%= link_to sn.shop_name, sn.shop_url, target: :_blank %>
                           </th>
                           <td class="shop-vote-balance">
                             <%= shop_edit_fields.hidden_field :id,class:"shop-answers-id" %>
