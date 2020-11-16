@@ -128,3 +128,24 @@
     <% end %>
   </div>
 </div>
+
+<div id="create-calender">
+  <span class="btn-modal-close" @click="close($event)"></span>
+  
+  <div class="calendar-title">
+    <span class="btn-monthMove prev fa fa-angle-left" @click="movePrevMonth"></span>
+    {{currentYear+"/"+currentMonth}}
+    <span class="btn-monthMove next fa fa-angle-right" @click="moveNextMonth"></span>
+  </div>
+
+  <div class="calendar-body">
+    <div class="calendar-body__item">
+      <div v-for="day in weeks" class="day">{{day}}</div>
+    </div>
+    <div class="calendar-body__item">
+      <div v-for="day in calendarMake" :value="day">
+        <span :class="checkSelectedDay(day)">{{day}}</span>
+      </div>
+    </div>
+  </div>
+</div>
